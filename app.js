@@ -49,9 +49,15 @@
 
   /* ---------- En-tête ---------- */
   const header = $('#site-header');
-  const onScroll = () => header && header.classList.toggle('is-scrolled', window.scrollY > 8);
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    const distance = document.documentElement.scrollHeight - window.innerHeight;
+    header.style.setProperty('--reading-progress', distance > 0 ? Math.min(1, Math.max(0, window.scrollY / distance)) : 0);
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 
   const navLinks = $$('.main-nav a[href^="#"]');
   if (hasIO && navLinks.length) {
@@ -206,6 +212,7 @@
     indicator.style.setProperty('--iw', `${tabs[currentTab].offsetWidth}px`);
   };
   const keepTabVisible = (tab) => {
+    if (tablist.scrollWidth <= tablist.clientWidth) return;
     const left = tab.offsetLeft - 24;
     const right = tab.offsetLeft + tab.offsetWidth + 24;
     if (left < tablist.scrollLeft) tablist.scrollTo({ left, behavior: reduced() ? 'auto' : 'smooth' });
@@ -828,3 +835,4 @@
     else if (mobileQuery.addListener) mobileQuery.addListener(onQuery);
   }
 })();
+

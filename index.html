@@ -21,8 +21,10 @@
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261018-security">
+  <link rel="stylesheet" href="security.css?v=20261018-security">
+  <script src="app.js?v=20261018-security" defer></script>
+  <script src="security.js?v=20261018-security" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HONOLYS","url":"https://honolys.fr/","logo":"https://honolys.fr/assets/logo/icon-512.png","email":"contact@honolys.fr","description":"Le cockpit unique du cabinet des médecins spécialistes et chirurgiens de secteur 2.","founder":{"@type":"Person","name":"Stéphane Elard","jobTitle":"Chirurgien urologue"}}</script>
 </head>
 <body id="top">
@@ -56,6 +58,7 @@
     <symbol id="i-login" viewBox="0 0 24 24"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M10 16l4-4-4-4M14 12H4"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.8" cy="6.5" r=".6"/><circle cx="4.8" cy="12" r=".6"/><circle cx="4.8" cy="17.5" r=".6"/></symbol>
     <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 1 8.5 8.5h-17A8.5 8.5 0 0 1 12 3.5z"/><path d="M12 12v6.2a2.1 2.1 0 0 1-4.2 0"/></symbol>
+    <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M4 21V6h5V3h6v3h5v15H4zM10 21v-5h4v5M12 5v6M9 8h6M7 13h.01M17 13h.01"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 15.5H3z"/><path d="M12 10v4.2M12 17h.01"/></symbol>
   </svg>
 
@@ -72,6 +75,7 @@
           <li><a href="#mutuelle">Mutuelle</a></li>
           <li><a href="#journee">Une journée</a></li>
           <li><a href="#modules">Modules</a></li>
+          <li><a href="#securite">Sécurité</a></li>
           <li><a href="#questions">Questions</a></li>
         </ul>
       </nav>
@@ -85,6 +89,7 @@
         </button>
       </div>
     </div>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="main" tabindex="-1">
@@ -103,6 +108,10 @@
               <span class="film-chip-text"><b>Voir le film</b><span>1&nbsp;minute, avec le son</span></span>
             </button>
           </div>
+          <nav class="hero-shortcuts" aria-label="Découvrir HONOLYS">
+            <a href="#modules"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>Explorer les modules</a>
+            <a href="#securite"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Données et sécurité</a>
+          </nav>
           <p class="hero-app">Déjà inscrit&nbsp;? <a href="https://app.honolys.fr" target="_blank" rel="noopener">Accéder à l’application<span class="visually-hidden">, nouvel onglet</span></a></p>
         </div>
 
@@ -763,6 +772,52 @@
       </div>
     </section>
 
+    <!-- SÉCURITÉ : CIRCUIT DE DONNÉES ILLUSTRATIF -->
+<section class="section security on-dark" id="securite" aria-labelledby="hl-heading">
+  <div class="wrap hl-layout">
+    <div class="hl-copy">
+      <div class="hl-eyebrow">UN ENVIRONNEMENT PROTÉGÉ</div>
+      <h2 id="hl-heading">Vos données.<br>À l’intérieur.<br><span>En sécurité.</span></h2>
+      <p>Un environnement HONOLYS autour d’un hébergement HDS, avec des accès adaptés au rôle de chacun.</p>
+      <div class="hl-option">
+        <span class="hl-option-caption">MODULE OPTIONNEL · EN PRÉPARATION</span>
+        <label class="hl-option-label">
+          <span><strong>Établissement de soins</strong><small>Clinique ou hôpital</small></span>
+          <input id="hl-facility-switch" type="checkbox" role="switch" checked disabled aria-controls="hl-facility-node hl-facility-detail">
+        </label>
+        <div id="hl-facility-detail">Fonctions prévues : planning opératoire · Documents partagés · Suivi du séjour</div>
+      </div>
+      <button id="hl-pause" type="button" hidden class="hl-pause" aria-pressed="false">Mettre les flux en pause</button>
+      <span id="hl-state" class="hl-state" role="status" aria-live="polite">Le module établissement est inclus dans cette illustration.</span>
+    </div>
+    <div class="hl-diagram" id="hl-diagram" role="group" aria-label="Un bouclier HONOLYS contient les espaces praticien, secrétariat, patient et établissement de soins. Des particules illustrent les échanges avec le serveur HDS central.">
+      <svg class="hl-network" id="hl-network" viewBox="0 0 600 550" aria-hidden="true">
+        <defs>
+          <linearGradient id="hl-shield-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15516b"/><stop offset="0.55" stop-color="#0b304a"/><stop offset="1" stop-color="#12435c"/></linearGradient>
+          <linearGradient id="hl-shield-edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a7ffff"/><stop offset="0.35" stop-color="#3ed5db"/><stop offset="0.65" stop-color="#1b6986"/><stop offset="1" stop-color="#85f9f1"/></linearGradient>
+          <radialGradient id="hl-glow"><stop stop-color="#47e4df" stop-opacity="0.19"/><stop offset="1" stop-color="#47e4df" stop-opacity="0"/></radialGradient>
+          <filter id="hl-edge-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
+          <clipPath id="hl-shield-clip"><path id="hl-clip-path" d="M 300 18.5 Q 429.8 59 571.4 75.2 L 559.6 302 Q 541.9 431.6 300 528.8 Q 58.1 431.6 40.4 302 L 28.6 75.2 Q 170.2 59 300 18.5 Z"/></clipPath>
+        </defs>
+        <ellipse id="hl-halo" cx="300" cy="258" rx="330" ry="275" fill="url(#hl-glow)"/>
+        <path id="hl-shadow-path" d="M 300 18.5 Q 429.8 59 571.4 75.2 L 559.6 302 Q 541.9 431.6 300 528.8 Q 58.1 431.6 40.4 302 L 28.6 75.2 Q 170.2 59 300 18.5 Z" fill="none" stroke="#50e5e1" stroke-width="8" opacity="0.22" filter="url(#hl-edge-glow)"/>
+        <path id="hl-shield-path" d="M 300 18.5 Q 429.8 59 571.4 75.2 L 559.6 302 Q 541.9 431.6 300 528.8 Q 58.1 431.6 40.4 302 L 28.6 75.2 Q 170.2 59 300 18.5 Z" fill="url(#hl-shield-fill)" stroke="url(#hl-shield-edge)" stroke-width="3"/>
+        <path id="hl-inner-path" d="M 300 25.15 Q 426.72 64.6 564.96 80.38 L 553.44 301.3 Q 536.16 427.54 300 522.22 Q 63.84 427.54 46.56 301.3 L 35.04 80.38 Q 173.28 64.6 300 25.15 Z" fill="none" stroke="#77dbdf" stroke-opacity="0.23" stroke-width="1"/>
+        <g id="hl-links" clip-path="url(#hl-shield-clip)"></g>
+        <g id="hl-particles" clip-path="url(#hl-shield-clip)"></g>
+      </svg>
+      <div class="hl-shield-name"><img src="assets/logo/honolys-logo-128.png" alt="" width="32" height="32" loading="lazy">HONOLYS<span>ESPACE PROTÉGÉ</span></div>
+      <div class="hl-node hl-practitioner" data-node="practitioner"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><strong>Praticien</strong></div>
+      <div class="hl-node hl-secretary" data-node="secretary"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg><strong>Secrétariat</strong></div>
+      <div class="hl-node hl-patient" data-node="patient"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><strong>Patient</strong></div>
+      <div class="hl-node hl-facility" data-node="facility" id="hl-facility-node"><svg class="icon" aria-hidden="true"><use href="#i-hospital"/></svg><strong>Établissement<br>de soins</strong><span>OPTION</span></div>
+      <div class="hl-hub" id="hl-hub"><div class="hl-server-stack" aria-hidden="true"><div><b></b><em></em></div><div><b></b><em></em></div><div><b></b><em></em></div><span class="hl-lock"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span></div><strong>SERVEUR HDS</strong></div>
+      <div class="hl-circuit-label"><span></span>Flux internes</div>
+    </div>
+  </div>
+  <div class="wrap hl-footer">Illustration du fonctionnement cible · Projet en développement. <a href="confidentialite.html">Confidentialité et données</a></div>
+</section>
+
     <!-- VISION -->
     <section class="section vision" id="vision" aria-labelledby="vision-title">
       <div class="wrap vision-grid">
@@ -805,6 +860,15 @@
           <p><a href="faq.html">Consulter toutes les questions fréquentes →</a></p>
         </div>
         <div class="faq-list">
+          <details>
+            <summary>Un établissement de soins pourra-t-il rejoindre HONOLYS&nbsp;?</summary>
+            <p>Un module optionnel est prévu pour les cliniques et les hôpitaux, autour du planning opératoire, des documents partagés et du suivi du séjour. Le bouclier de la section Sécurité illustre sa place dans l’environnement HONOLYS. Ce module est en préparation.</p>
+          </details>
+          <details>
+            <summary>Que représente le bouclier de sécurité&nbsp;?</summary>
+            <p>Il illustre le fonctionnement cible du projet&nbsp;: les espaces praticien, secrétariat et patient échangent dans l’environnement HONOLYS autour d’un hébergement HDS, avec des accès adaptés au rôle de chacun. Les points lumineux représentent des flux fictifs&nbsp;; aucune donnée patient ne circule dans cette démonstration.</p>
+          </details>
+
           <details>
             <summary>À qui s’adresse HONOLYS&nbsp;?</summary>
             <p>Aux médecins spécialistes et chirurgiens exerçant en secteur&nbsp;2, notamment adhérents à l’OPTAM ou à l’OPTAM-ACO, ainsi qu’aux secrétariats qui les accompagnent.</p>
@@ -875,6 +939,7 @@
       <nav class="footer-nav" aria-label="Liens de pied de page">
         <ul>
           <li><a href="#film">Le film</a></li>
+          <li><a href="#securite">Sécurité</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="tarifs.html">Tarifs</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -909,6 +974,7 @@
         <li><a href="#journee">Une journée au cabinet</a></li>
         <li><a href="#modules">Les modules</a></li>
         <li><a href="#equipe">Praticien, secrétariat, patient</a></li>
+        <li><a href="#securite">Sécurité et établissement de soins</a></li>
         <li><a href="#vision">Le fondateur</a></li>
         <li><a href="#questions">Questions</a></li>
       </ul>
@@ -980,3 +1046,4 @@
   <p class="visually-hidden" aria-live="polite" id="global-live"></p>
 </body>
 </html>
+
