@@ -57,10 +57,26 @@
       const point = (x, y) => `${inset + w * x} ${inset + h * y}`;
       return `M ${point(.5, .025)} Q ${point(.72, .10)} ${point(.96, .13)} L ${point(.94, .55)} Q ${point(.91, .79)} ${point(.5, .97)} Q ${point(.09, .79)} ${point(.06, .55)} L ${point(.04, .13)} Q ${point(.28, .10)} ${point(.5, .025)} Z`;
     };
-    ['hl-shield-path', 'hl-shadow-path', 'hl-clip-path'].forEach((id) => find(`#${id}`).setAttribute('d', shield(5)));
-    find('#hl-inner-path').setAttribute('d', shield(12));
-    const halo = find('#hl-halo');
-    Object.entries({ cx: width / 2, cy: height * .47, rx: width * .55, ry: height * .5 }).forEach(([key, value]) => halo.setAttribute(key, value));
+    // Nested surfaces give the shield a thick, bevelled glass edge.
+    const rim = Math.min(21, width * .035);
+    const layers = {
+      'hl-rim-path': 5, 'hl-shadow-path': 5, 'hl-depth-path': 5,
+      'hl-cast-path': 5, 'hl-bevel-path': 5 + rim * .24,
+      'hl-inner-bevel-path': 5 + rim * .77,
+      'hl-shield-path': 5 + rim, 'hl-clip-path': 5 + rim,
+      'hl-inner-path': 8 + rim,
+    };
+    Object.entries(layers).forEach(([id, inset]) => find(`#${id}`).setAttribute('d', shield(inset)));
+    const depth = Math.min(9, width * .018);
+    find('#hl-depth-path').setAttribute('transform', `translate(${depth},${depth * 1.4})`);
+    find('#hl-cast-path').setAttribute('transform', `translate(${depth * 2},${depth * 2.7})`);
+    const ellipse = (id, attributes) => Object.entries(attributes).forEach(([key, value]) => find(`#${id}`).setAttribute(key, value));
+    ellipse('hl-halo', { cx: width / 2, cy: height * .47, rx: width * .6, ry: height * .53 });
+    ellipse('hl-floor-light', { cx: width * .5, cy: height * .97, rx: width * .53, ry: height * .075 });
+    ellipse('hl-floor-shadow', { cx: width * .54, cy: height * .99, rx: width * .34, ry: height * .033 });
+    find('#hl-glass-facet').setAttribute('d', `M 0 0 H ${width} V ${height} H 0 Z`);
+    find('#hl-glass-reflection').setAttribute('d', `M 0 0 H ${width} V ${height * .19} Q ${width * .64} ${height * .27} ${width * .45} ${height * .55} Q ${width * .23} ${height * .81} 0 ${height * .78} Z`);
+    find('#hl-glass-spine').setAttribute('d', `M ${width / 2} 0 V ${height}`);
     links.replaceChildren();
     particles.replaceChildren();
     routes = [];
