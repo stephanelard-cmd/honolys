@@ -1,106 +1,35 @@
-
-#securite{--hl-bg:#08283e;--hl-panel:#0c3048;--hl-text:#f2f9fc;--hl-muted:#bdd3e0;--hl-teal:#64e7e3;--hl-stroke:#27546b;color-scheme:dark;font-family:Manrope,Inter,Arial,sans-serif;color:var(--hl-text);background:var(--hl-bg);overflow:hidden;border-radius:18px;isolation:isolate}
+/* The shield is the user's original artwork, displayed without redrawing it. */
+#securite{--hl-text:#f2f9fc;--hl-muted:#bdd3e0;--hl-teal:#64e7e3;color-scheme:dark;font-family:var(--font);color:var(--hl-text);background:radial-gradient(ellipse at 75% 50%,#0b3b55,#08283e 70%);padding-block:clamp(56px,7vw,96px);border-top:1px solid #245069;overflow:clip;isolation:isolate}
 #securite *{box-sizing:border-box}
-#securite .hl-layout{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(0,1.4fr);gap:8px;padding:34px 25px 12px 35px;background:radial-gradient(ellipse at 80% 48%,#0f3d56 0%,#08283e 66%);align-items:center}
-#securite .hl-copy{padding:0 0 15px}
-#securite .hl-eyebrow{font-size:11px;letter-spacing:2px;color:var(--hl-teal);font-weight:650;margin:0 0 20px;line-height:1.7}
-#securite h2{font-size:clamp(30px,4.2vw,48px);line-height:1.12;letter-spacing:-1.5px;font-weight:750;margin:0 0 22px;color:var(--hl-text)}
+#securite [hidden]{display:none!important}
+#securite .hl-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:clamp(18px,3vw,48px);align-items:center}
+#securite .hl-copy{max-width:450px;padding-bottom:15px}
+#securite .hl-eyebrow{font-size:12px;letter-spacing:2px;color:var(--hl-teal);font-weight:650;margin-bottom:20px;line-height:1.7}
+#securite h2{font-size:clamp(36px,4.4vw,56px);line-height:1.12;letter-spacing:-1.5px;font-weight:750;margin:0 0 22px;color:var(--hl-text)}
 #securite h2 span{color:var(--hl-teal)}
-#securite p{font-size:15px;line-height:1.65;color:var(--hl-muted);margin:0 0 28px;max-width:330px}
+#securite p{font-size:17px;line-height:1.65;color:var(--hl-muted);margin:0 0 28px;max-width:29em}
 #securite .hl-option{background:#10354b;border:1px solid #2d5e72;border-radius:13px;padding:17px;margin-bottom:20px}
-#securite .hl-option-caption{display:block;font-size:10px;letter-spacing:1.4px;color:#8eb7c8;margin-bottom:13px}
-#securite .hl-option-label{display:flex;align-items:center;gap:8px;justify-content:space-between}
-#securite .hl-option-label strong{display:block;font-size:14px;line-height:1.45;font-weight:650}
-#securite .hl-option-label small{display:block;font-size:12px;line-height:1.5;color:var(--hl-muted);margin-top:4px}
-#securite input[type=checkbox]{appearance:none;-webkit-appearance:none;width:42px;height:24px;flex:0 0 42px;border:1px solid #6d98a9;border-radius:20px;background:#294a5b;position:relative;margin:0;transition:background .2s}
+#securite .hl-option-caption{display:block;font-size:11px;letter-spacing:1px;color:#8eb7c8;margin-bottom:13px;line-height:1.6}
+#securite .hl-option-label{display:flex;align-items:center;gap:12px;justify-content:space-between;min-height:48px;cursor:pointer}
+#securite .hl-option-label strong{display:block;font-size:16px;line-height:1.45;font-weight:650}
+#securite .hl-option-label small{display:block;font-size:13px;line-height:1.5;color:var(--hl-muted);margin-top:4px}
+#securite input[type=checkbox]{appearance:none;-webkit-appearance:none;width:42px;height:24px;flex:0 0 42px;border:1px solid #6d98a9;border-radius:20px;background:#294a5b;position:relative;margin:0;transition:background .2s;cursor:pointer}
 #securite input[type=checkbox]::before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;border-radius:50%;background:#d4e5ed;transition:transform .2s}
 #securite input[type=checkbox]:checked{background:#63ddd8;border-color:#63ddd8}
 #securite input[type=checkbox]:checked::before{transform:translateX(18px);background:#082b3f}
-#securite #hl-facility-detail{font-size:12px;color:var(--hl-muted);line-height:1.65;border-top:1px solid #285268;margin-top:14px;padding-top:12px}
-#securite .hl-pause{font:inherit;font-size:12px;color:var(--hl-text);background:#153f56;border:1px solid #376378;border-radius:8px;padding:11px 14px;min-height:42px}
+#securite #hl-facility-detail{font-size:13px;color:var(--hl-muted);line-height:1.65;border-top:1px solid #285268;margin-top:14px;padding-top:12px}
+#securite .hl-pause{font:inherit;font-size:14px;color:var(--hl-text);background:#153f56;border:1px solid #376378;border-radius:8px;padding:11px 14px;min-height:44px;cursor:pointer}
 #securite .hl-pause:hover{background:#1b4c63}
-#securite .hl-state{display:block;font-size:11px;line-height:1.6;margin-top:12px;color:#9dbdcc}
-#securite .hl-diagram{width:100%;height:550px;position:relative;min-width:0}
-#securite .hl-network{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-#securite .hl-shield-name{position:absolute;top:13%;left:50%;transform:translateX(-50%);font-size:24px;font-weight:750;letter-spacing:2px;text-align:center;white-space:nowrap}
-#securite .hl-shield-name span{display:block;font-size:9px;letter-spacing:2px;font-weight:500;color:#9cc8d6;margin-top:6px}
-#securite .hl-node{position:absolute;transform:translate(-50%,-50%);width:clamp(88px,22%,125px);min-height:87px;padding:13px 5px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(145deg,#20566d,#0b2d45);border:1px solid #61b8c7;border-radius:15px;box-shadow:0 8px 24px #041e2a70,inset 0 1px 2px #bcffff30;text-align:center}
-#securite .hl-node svg{width:29px;height:29px;color:#88f4ef;stroke-width:1.6;flex:0 0 auto}
-#securite .hl-node strong{font-size:13px;font-weight:600;line-height:1.35}
-#securite .hl-node [data-lucide]{height:29px}
-#securite .hl-practitioner{left:27%;top:30%}
-#securite .hl-secretary{left:73%;top:30%}
-#securite .hl-patient{left:32%;top:66%}
-#securite .hl-facility{left:68%;top:66%}
-#securite .hl-facility span{font-size:9px;letter-spacing:1.3px;color:#b8eeed;line-height:1;position:absolute;bottom:-19px}
-#securite .hl-hub{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:100px;text-align:center}
-#securite .hl-server-stack{height:73px;position:relative;padding-top:7px;filter:drop-shadow(0 0 18px #5ce5e129)}
-#securite .hl-server-stack>div{height:22px;margin-bottom:2px;border-radius:5px;background:linear-gradient(180deg,#27677f,#102f46 40%);border:1px solid #69c2ca;box-shadow:0 3px 4px #041d30;display:flex;align-items:center;justify-content:space-between;padding:0 9px}
-#securite .hl-server-stack b{width:4px;height:4px;background:#74fff2;border-radius:50%;box-shadow:0 0 7px #74fff2}
-#securite .hl-server-stack em{height:2px;width:29px;background:#396b7e}
-#securite .hl-lock{position:absolute;left:50%;top:24px;transform:translateX(-50%);border:1px solid #65dae2;background:#15465d;color:#8cfff2;border-radius:6px;display:grid;place-items:center;width:29px;height:33px}
-#securite .hl-lock svg{width:19px;height:19px}
-#securite .hl-hub strong{font-size:11px;letter-spacing:.7px;display:block;margin-top:8px;font-weight:650;white-space:nowrap}
-#securite .hl-circuit-label{position:absolute;top:82.5%;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;color:#b4dee4;display:flex;gap:7px;align-items:center}
-#securite .hl-circuit-label span{height:5px;width:5px;border-radius:50%;background:var(--hl-teal);box-shadow:0 0 8px #64e7e3}
-#securite .hl-footer{padding:14px 20px 21px;color:#8fb3c4;text-align:center;font-size:11px;line-height:1.6}
-#securite [hidden]{display:none!important}
-@media(max-width:760px){#securite .hl-layout{grid-template-columns:1fr;padding:28px 22px 0}#securite .hl-copy{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}#securite .hl-eyebrow{grid-column:1/-1;margin-bottom:14px}#securite h2{font-size:34px;grid-row:2 / 4;margin:0}#securite p{grid-column:2;margin:0 0 18px;font-size:13px}#securite .hl-option{grid-column:2;margin:0}#securite .hl-pause{grid-column:1;margin-top:18px;align-self:start;justify-self:start}#securite .hl-state{grid-column:2;margin-top:18px}#securite .hl-diagram{height:550px;max-width:600px;margin:0 auto}}
-@media(prefers-reduced-motion:reduce){#securite input[type=checkbox],#securite input[type=checkbox]::before{transition:none}}
-/* Integration in the existing HONOLYS page. */
-#securite{border-radius:0;overflow:clip;padding-block:clamp(56px,7vw,96px);font-family:var(--font);border-top:1px solid #245069;background:radial-gradient(ellipse at 74% 48%,#123f57,#08283e 68%)}
-#securite .hl-layout{padding:0;background:none;grid-template-columns:minmax(0,.85fr) minmax(0,1.4fr);gap:clamp(18px,3vw,48px)}
-#securite .hl-copy{max-width:450px}
-#securite .hl-eyebrow{font-size:12px}
-#securite h2{font-size:clamp(36px,4.4vw,56px)}
-#securite p{font-size:17px;max-width:29em}
-#securite .hl-diagram{height:610px;max-width:680px;justify-self:center}
-#securite .hl-node{width:clamp(92px,23%,146px);min-height:96px}
-#securite .hl-node strong{font-size:15px}
-#securite .hl-shield-name{top:12%;font-size:25px;display:flex;flex-direction:column;align-items:center}
-#securite .hl-shield-name img{width:32px;height:32px;margin-bottom:9px;border-radius:8px}
-#securite .hl-shield-name span{font-size:10px}
-#securite .hl-node.hl-practitioner,#securite .hl-node.hl-secretary{top:33%}
-#securite .hl-hub{top:49%;width:106px}
-#securite .hl-node.hl-patient,#securite .hl-node.hl-facility{top:68%}
-#securite .hl-hub strong{font-size:12px}
-#securite .hl-option-caption{font-size:11px;line-height:1.6;letter-spacing:1px}
-#securite .hl-option-label{min-height:48px;cursor:pointer}
-#securite .hl-option-label strong{font-size:16px}
-#securite .hl-option-label small,#securite #hl-facility-detail{font-size:13px}
-#securite .hl-pause{font-size:14px;min-height:44px;cursor:pointer}
-#securite .hl-state{font-size:12px}
-#securite .hl-footer{padding:24px 0 0;font-size:12px}
+#securite .hl-state{display:block;font-size:12px;line-height:1.6;margin-top:12px;color:#9dbdcc}
+#securite .hl-diagram{width:100%;aspect-ratio:700/755;position:relative;min-width:0;max-width:700px;justify-self:center;isolation:isolate}
+#securite .hl-network{display:block;width:100%;height:100%;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 2%,#000 95%,transparent);mask-composite:intersect}
+#securite .hl-facility{position:absolute;left:68.6%;top:62.1%;transform:translate(-50%,-50%);width:20%;padding:9px 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid #b8fff6;border-radius:12px;background:linear-gradient(140deg,#3b9bb0,#0c3550 45%,#07283e);box-shadow:inset 2px 2px 2px #b8ffff66,inset -2px -2px 3px #031e35,3px 4px 0 #1b647c,8px 12px 15px #001424a6;color:#fff;text-align:center}
+#securite .hl-facility svg{width:25px;height:25px;color:#8cfff5;stroke-width:1.6}
+#securite .hl-facility strong{font-size:clamp(10px,1.1vw,14px);font-weight:600;line-height:1.3}
+#securite .hl-facility span{font-size:8px;letter-spacing:1px;color:#9ae6e3}
+#securite .hl-footer{padding:24px 0 0;color:#8fb3c4;text-align:center;font-size:12px;line-height:1.6}
 #securite .hl-footer a{display:inline-block;margin-left:6px;color:#c4e8ed}
-@media(max-width:980px){#securite .hl-layout{grid-template-columns:1fr;gap:26px}#securite .hl-copy{max-width:none;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}#securite .hl-eyebrow{grid-column:1/-1}#securite h2{grid-row:2/4;font-size:44px}#securite p{grid-column:2;margin-bottom:18px;font-size:15px}#securite .hl-option{grid-column:2;margin-bottom:0}#securite .hl-pause{grid-column:1;justify-self:start;align-self:start;margin-top:20px}#securite .hl-state{grid-column:2;margin-top:20px}#securite .hl-diagram{height:610px}}
-@media(max-width:560px){#securite .hl-copy{display:block}#securite h2{font-size:40px;margin-bottom:20px}#securite p{font-size:16px}#securite .hl-option{margin-top:20px}#securite .hl-diagram{height:510px}#securite .hl-node{width:clamp(82px,25%,110px);min-height:82px;padding:10px 3px;gap:6px}#securite .hl-node strong{font-size:11.5px}#securite .hl-node svg{width:25px;height:25px}#securite .hl-hub{width:80px;top:51%}#securite .hl-hub strong{font-size:11px}#securite .hl-shield-name{top:12%;font-size:21px}#securite .hl-shield-name img{width:28px;height:28px;margin-bottom:7px}#securite .hl-shield-name span{font-size:9px;letter-spacing:1.5px}#securite .hl-node.hl-patient{left:31%;top:70%}#securite .hl-node.hl-facility{left:69%;top:70%}#securite .hl-facility span{font-size:9px}#securite .hl-circuit-label{top:85%}}
+@media(max-width:980px){#securite .hl-layout{grid-template-columns:1fr;gap:26px}#securite .hl-copy{max-width:none;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}#securite .hl-eyebrow{grid-column:1/-1}#securite h2{grid-row:2/4;font-size:44px}#securite p{grid-column:2;margin-bottom:18px;font-size:15px}#securite .hl-option{grid-column:2;margin-bottom:0}#securite .hl-pause{grid-column:1;justify-self:start;align-self:start;margin-top:20px}#securite .hl-state{grid-column:2;margin-top:20px}#securite .hl-diagram{max-width:630px}}
+@media(max-width:560px){#securite .hl-copy{display:block}#securite h2{font-size:40px;margin-bottom:20px}#securite p{font-size:16px}#securite .hl-option{margin-top:20px}#securite .hl-facility{padding:6px 2px;gap:3px;border-radius:8px}#securite .hl-facility svg{width:18px;height:18px}#securite .hl-facility strong{font-size:9px}#securite .hl-facility span{font-size:7px;letter-spacing:.5px}}
+@media(prefers-reduced-motion:reduce){#securite input[type=checkbox],#securite input[type=checkbox]::before{transition:none}}
 @media print{#securite .hl-pause,#securite input{display:none}#securite{break-inside:avoid}}
-
-/* Keep each role and the logo separated at narrow widths. */
-#securite .hl-shield-name{top:10%;line-height:1.2}
-#securite .hl-shield-name img{width:28px;height:28px;margin-bottom:6px}
-#securite .hl-shield-name span{line-height:1.2}
-@media(max-width:560px){#securite .hl-shield-name{top:12%}#securite .hl-shield-name img{display:none}#securite .hl-node.hl-practitioner,#securite .hl-node.hl-secretary{top:30.5%}#securite .hl-hub{top:49%}#securite .hl-server-stack{height:67px}#securite .hl-server-stack>div{height:18px}#securite .hl-node.hl-patient,#securite .hl-node.hl-facility{top:67%}}
-
-/* Dimensional glass, with a consistent light source at the upper left. */
-#securite .hl-diagram{isolation:isolate;margin-bottom:16px}
-#securite .hl-shield-name{text-shadow:0 2px 2px #001522,0 5px 18px #001522b0}
-#securite .hl-shield-name img{box-shadow:2px 4px 0 #07283e,5px 9px 12px #00111f75}
-#securite .hl-node{border:1px solid #a4f7f1;background:linear-gradient(135deg,#479cae 0%,#205c73 12%,#123c55 50%,#0c2b42 86%,#225970 100%);box-shadow:inset 2px 2px 2px #d8ffff6b,inset -3px -3px 3px #031e35,2px 3px 0 #226b81,4px 5px 0 #0b3850,5px 6px 0 #52adbb8c,10px 15px 18px #001424a6,0 0 22px #57dfdd12;overflow:visible}
-#securite .hl-node::before{content:"";position:absolute;inset:4px;border:1px solid #89e5e52e;border-top-color:#b8ffff73;border-left-color:#8beded61;border-radius:11px;pointer-events:none;background:linear-gradient(140deg,#cbffff21,transparent 45%)}
-#securite .hl-node svg{filter:drop-shadow(0 2px 1px #052339) drop-shadow(0 0 6px #5be9e150)}
-#securite .hl-node strong{text-shadow:0 2px 3px #001a2b}
-#securite .hl-practitioner{rotate:-3deg}
-#securite .hl-secretary{rotate:3deg}
-#securite .hl-patient{rotate:-2deg}
-#securite .hl-facility{rotate:2deg}
-#securite .hl-hub{filter:drop-shadow(8px 13px 10px #00132399)}
-#securite .hl-server-stack{height:82px;padding-top:10px;filter:drop-shadow(0 0 15px #5ce5e12e);margin-right:7px}
-#securite .hl-server-stack::before{content:"";position:absolute;left:0;right:-8px;top:-1px;height:15px;clip-path:polygon(11% 0,89% 0,100% 70%,89% 100%,0 100%,0 70%);background:linear-gradient(170deg,#b7ffff,#4da4b7 40%,#153e58 46%,#76dfe1 80%);filter:drop-shadow(0 -2px 3px #83ffef80)}
-#securite .hl-server-stack>div{height:22px;position:relative;z-index:1;margin-bottom:3px;border:1px solid #69c2ca;border-right-color:#173e56;border-radius:3px;background:linear-gradient(180deg,#31718b,#0d3048 28%,#0a273e 78%,#174862);box-shadow:inset 1px 1px 0 #98dce54d,inset 0 -2px 2px #031d31,0 2px 0 #031b2a;overflow:visible}
-#securite .hl-server-stack>div::after{content:"";position:absolute;left:100%;top:-1px;height:calc(100% + 2px);width:8px;transform:skewY(-32deg);transform-origin:left top;border:1px solid #61b8c1;border-left:0;border-radius:0 2px 2px 0;background:linear-gradient(90deg,#255f79,#0c2b41)}
-#securite .hl-server-stack em{height:4px;width:29px;background:repeating-linear-gradient(90deg,#2d677e 0 3px,#0b2337 3px 6px);box-shadow:0 1px 0 #77bdca26}
-#securite .hl-lock{z-index:2;top:30px;width:30px;height:34px;border-color:#b7fffa;background:linear-gradient(135deg,#70e7e6,#2b9aaf 40%,#15516f);color:#d7fffb;box-shadow:inset 1px 1px 1px #d5ffffa6,2px 3px 0 #082b43,4px 5px 7px #001522ad,0 0 15px #67fff052}
-#securite .hl-hub strong{text-shadow:0 2px 3px #001221;margin-top:10px}
-#securite .hl-circuit-label{background:#082b3e85;border:1px solid #6bd4d12b;border-radius:20px;padding:6px 11px;box-shadow:inset 0 1px 0 #b6fff00d,0 4px 8px #00152250}
-@media(max-width:560px){#securite .hl-node{box-shadow:inset 2px 2px 2px #d8ffff5e,inset -2px -2px 2px #031e35,2px 3px 0 #226b81,3px 4px 0 #0b3850,4px 5px 0 #52adbb70,6px 10px 12px #0014249e}#securite .hl-node.hl-patient{left:33%}#securite .hl-node.hl-facility{left:67%}#securite .hl-server-stack{height:70px;padding-top:8px}#securite .hl-server-stack>div{height:18px}#securite .hl-server-stack::before{height:12px}#securite .hl-lock{top:23px;width:27px;height:30px}#securite .hl-circuit-label{font-size:10px;padding:5px 9px}}

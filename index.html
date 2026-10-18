@@ -21,10 +21,10 @@
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261018-security">
-  <link rel="stylesheet" href="security.css?v=20261018-security-3d">
+  <link rel="stylesheet" href="styles.css?v=20261018-security-reference">
+  <link rel="stylesheet" href="security.css?v=20261018-security-reference">
   <script src="app.js?v=20261018-security" defer></script>
-  <script src="security.js?v=20261018-security-3d" defer></script>
+  <script src="security.js?v=20261018-security-reference" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HONOLYS","url":"https://honolys.fr/","logo":"https://honolys.fr/assets/logo/icon-512.png","email":"contact@honolys.fr","description":"Le cockpit unique du cabinet des médecins spécialistes et chirurgiens de secteur 2.","founder":{"@type":"Person","name":"Stéphane Elard","jobTitle":"Chirurgien urologue"}}</script>
 </head>
 <body id="top">
@@ -783,56 +783,25 @@
         <span class="hl-option-caption">MODULE OPTIONNEL · EN PRÉPARATION</span>
         <label class="hl-option-label">
           <span><strong>Établissement de soins</strong><small>Clinique ou hôpital</small></span>
-          <input id="hl-facility-switch" type="checkbox" role="switch" checked disabled aria-controls="hl-facility-node hl-facility-detail">
+          <input id="hl-facility-switch" type="checkbox" role="switch" disabled aria-controls="hl-facility-node hl-facility-detail">
         </label>
-        <div id="hl-facility-detail">Fonctions prévues : planning opératoire · Documents partagés · Suivi du séjour</div>
+        <div id="hl-facility-detail" hidden>Fonctions prévues : planning opératoire · Documents partagés · Suivi du séjour</div>
       </div>
       <button id="hl-pause" type="button" hidden class="hl-pause" aria-pressed="false">Mettre les flux en pause</button>
-      <span id="hl-state" class="hl-state" role="status" aria-live="polite">Le module établissement est inclus dans cette illustration.</span>
+      <span id="hl-state" class="hl-state" role="status" aria-live="polite">Activez l’option pour afficher l’établissement dans le circuit.</span>
     </div>
-    <div class="hl-diagram" id="hl-diagram" role="group" aria-label="Un bouclier HONOLYS contient les espaces praticien, secrétariat, patient et établissement de soins. Des particules illustrent les échanges avec le serveur HDS central.">
-      <svg class="hl-network" id="hl-network" viewBox="0 0 600 550" aria-hidden="true">
+    <div class="hl-diagram" id="hl-diagram" role="group" aria-label="Bouclier HONOLYS : praticien, secrétariat et patient reliés au serveur HDS dans un environnement fermé.">
+      <svg class="hl-network" id="hl-network" viewBox="680 205 700 755" aria-hidden="true">
         <defs>
-          <linearGradient id="hl-shield-fill" x1="0" y1="0" x2="0.85" y2="1"><stop stop-color="#2c8098"/><stop offset="0.24" stop-color="#14485f"/><stop offset="0.55" stop-color="#082c43"/><stop offset="1" stop-color="#17546d"/></linearGradient>
-          <linearGradient id="hl-shield-edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f2ffff"/><stop offset="0.16" stop-color="#79fff4"/><stop offset="0.31" stop-color="#168ca5"/><stop offset="0.46" stop-color="#b3ffff"/><stop offset="0.62" stop-color="#1a7192"/><stop offset="0.79" stop-color="#4fe7e6"/><stop offset="1" stop-color="#d5ffff"/></linearGradient>
-          <linearGradient id="hl-depth" x1="0" y1="0" x2="1" y2="0.8"><stop stop-color="#287c91"/><stop offset="0.47" stop-color="#0c3c54"/><stop offset="0.7" stop-color="#031a2b"/><stop offset="1" stop-color="#1b7a90"/></linearGradient>
-          <linearGradient id="hl-bevel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7ffff"/><stop offset="0.13" stop-color="#4fcdd6"/><stop offset="0.32" stop-color="#0c5673"/><stop offset="0.53" stop-color="#053b53"/><stop offset="0.8" stop-color="#339cad"/><stop offset="1" stop-color="#91ffef"/></linearGradient>
-          <linearGradient id="hl-inner-bevel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#072b43"/><stop offset="0.45" stop-color="#175b72"/><stop offset="0.7" stop-color="#5bd3d6"/><stop offset="1" stop-color="#b5fffa"/></linearGradient>
-          <linearGradient id="hl-highlight" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#efffff" stop-opacity="0.38"/><stop offset="0.38" stop-color="#82f8f5" stop-opacity="0.07"/><stop offset="0.68" stop-color="#79ffff" stop-opacity="0"/></linearGradient>
-          <linearGradient id="hl-facet" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#b2ffff" stop-opacity="0"/><stop offset="0.49" stop-color="#b2ffff" stop-opacity="0.1"/><stop offset="0.5" stop-color="#001322" stop-opacity="0.21"/><stop offset="1" stop-color="#001322" stop-opacity="0"/></linearGradient>
-          <radialGradient id="hl-glow"><stop stop-color="#47e4df" stop-opacity="0.24"/><stop offset="1" stop-color="#47e4df" stop-opacity="0"/></radialGradient>
-          <radialGradient id="hl-ground-glow"><stop stop-color="#72fff2" stop-opacity="0.5"/><stop offset="0.36" stop-color="#30c4d7" stop-opacity="0.24"/><stop offset="1" stop-color="#1aacc7" stop-opacity="0"/></radialGradient>
-          <radialGradient id="hl-ground-shadow"><stop stop-color="#00111c" stop-opacity="0.9"/><stop offset="1" stop-color="#00111c" stop-opacity="0"/></radialGradient>
-          <filter id="hl-edge-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
-          <filter id="hl-cast-shadow" x="-35%" y="-25%" width="180%" height="170%"><feGaussianBlur stdDeviation="13"/></filter>
-          <clipPath id="hl-shield-clip"><path id="hl-clip-path" d="M 300 18.5 Q 429.8 59 571.4 75.2 L 559.6 302 Q 541.9 431.6 300 528.8 Q 58.1 431.6 40.4 302 L 28.6 75.2 Q 170.2 59 300 18.5 Z"/></clipPath>
+          <clipPath id="hl-reference-crop"><path d="M 680 280 H 700 V 205 H 1310 V 280 H 1380 V 960 H 680 Z"/></clipPath>
+          <clipPath id="hl-shield-clip"><path d="M 1019 248 Q 1140 293 1290 334 L 1280 536 Q 1250 762 1019 893 Q 782 755 753 536 L 748 337 Q 892 296 1019 248 Z"/></clipPath>
         </defs>
-        <ellipse id="hl-halo" cx="300" cy="258" rx="330" ry="275" fill="url(#hl-glow)"/>
-        <ellipse id="hl-floor-light" cx="300" cy="538" rx="280" ry="48" fill="url(#hl-ground-glow)"/>
-        <ellipse id="hl-floor-shadow" cx="325" cy="548" rx="205" ry="20" fill="url(#hl-ground-shadow)"/>
-        <path id="hl-cast-path" fill="#00121e" opacity="0.75" filter="url(#hl-cast-shadow)"/>
-        <path id="hl-depth-path" fill="url(#hl-depth)" stroke="#359eae" stroke-width="1"/>
-        <path id="hl-shadow-path" fill="none" stroke="#50e5e1" stroke-width="10" opacity="0.48" filter="url(#hl-edge-glow)"/>
-        <path id="hl-rim-path" fill="url(#hl-shield-edge)" stroke="#cbffff" stroke-width="1.3"/>
-        <path id="hl-bevel-path" fill="url(#hl-bevel)" stroke="#197d94" stroke-width="1"/>
-        <path id="hl-inner-bevel-path" fill="url(#hl-inner-bevel)" stroke="#94ffef" stroke-opacity="0.6" stroke-width="1"/>
-        <path id="hl-shield-path" d="M 300 18.5 Q 429.8 59 571.4 75.2 L 559.6 302 Q 541.9 431.6 300 528.8 Q 58.1 431.6 40.4 302 L 28.6 75.2 Q 170.2 59 300 18.5 Z" fill="url(#hl-shield-fill)" stroke="#062638" stroke-width="2"/>
-        <g clip-path="url(#hl-shield-clip)">
-          <path id="hl-glass-facet" fill="url(#hl-facet)"/>
-          <path id="hl-glass-reflection" fill="url(#hl-highlight)"/>
-          <path id="hl-glass-spine" fill="none" stroke="#bcfff5" stroke-width="1" stroke-opacity="0.1"/>
-        </g>
-        <path id="hl-inner-path" fill="none" stroke="#7be7e4" stroke-opacity="0.42" stroke-width="1"/>
+        <image href="assets/security/honolys-shield-reference.png" width="1536" height="1024" clip-path="url(#hl-reference-crop)"/>
         <g id="hl-links" clip-path="url(#hl-shield-clip)"></g>
         <g id="hl-particles" clip-path="url(#hl-shield-clip)"></g>
       </svg>
-      <div class="hl-shield-name"><img src="assets/logo/honolys-logo-128.png" alt="" width="32" height="32" loading="lazy">HONOLYS<span>ESPACE PROTÉGÉ</span></div>
-      <div class="hl-node hl-practitioner" data-node="practitioner"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><strong>Praticien</strong></div>
-      <div class="hl-node hl-secretary" data-node="secretary"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg><strong>Secrétariat</strong></div>
-      <div class="hl-node hl-patient" data-node="patient"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><strong>Patient</strong></div>
-      <div class="hl-node hl-facility" data-node="facility" id="hl-facility-node"><svg class="icon" aria-hidden="true"><use href="#i-hospital"/></svg><strong>Établissement<br>de soins</strong><span>OPTION</span></div>
-      <div class="hl-hub" id="hl-hub"><div class="hl-server-stack" aria-hidden="true"><div><b></b><em></em></div><div><b></b><em></em></div><div><b></b><em></em></div><span class="hl-lock"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span></div><strong>SERVEUR HDS</strong></div>
-      <div class="hl-circuit-label"><span></span>Flux internes</div>
+      <div class="hl-facility" id="hl-facility-node" hidden><svg class="icon" aria-hidden="true"><use href="#i-hospital"/></svg><strong>Établissement<br>de soins</strong><span>OPTION</span></div>
+      <span class="visually-hidden">Praticien, secrétariat et patient. Serveur HDS au cœur du circuit interne.</span>
     </div>
   </div>
   <div class="wrap hl-footer">Illustration du fonctionnement cible · Projet en développement. <a href="confidentialite.html">Confidentialité et données</a></div>
