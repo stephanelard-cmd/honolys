@@ -1,0 +1,38 @@
+name: Contrôle SEO statique HONOLYS
+
+on:
+  pull_request:
+    paths:
+      - '*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'scripts/seo_audit.py'
+      - '.github/workflows/seo-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'scripts/seo_audit.py'
+      - '.github/workflows/seo-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo:
+    name: Vérifier sitemap, titres, canoniques, JSON-LD et indexabilité
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le site
+        uses: actions/checkout@v4
+      - name: Préparer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compiler le script
+        run: python -m py_compile scripts/seo_audit.py
+      - name: Exécuter les contrôles SEO statiques
+        run: python scripts/seo_audit.py
