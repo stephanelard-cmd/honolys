@@ -306,7 +306,7 @@
     };
     const chipState = () => [
       ['ok', 'Garanties importées', 'check'],
-      dep === HABITUEL ? ['soft', 'Devis du 3 octobre', ''] : ['warn', 'Nouveau devis à accepter', 'alert'],
+      dep === HABITUEL ? ['soft', 'Devis du 3 octobre', ''] : ['warn', 'Nouveau devis envoyé', 'alert'],
       reminded ? ['ok', 'Relance envoyée', 'check'] : ['warn', 'Remboursement signalé', 'bell'],
       ['ok', `Échéancier en ${plan}${NBSP}fois`, 'check']
     ][current];
@@ -323,7 +323,7 @@
       range.style.setProperty('--p', `${((dep - Number(range.min)) / (Number(range.max) - Number(range.min))) * 100}%`);
       sentenceEl.textContent = sentence();
       alertEl.textContent = `${eur(cover)} le jeudi 12 novembre. Règlement attendu : ${eur(dep)}.`;
-      messageEl.textContent = `Bonjour M.${NBSP}Moreau, votre mutuelle vous a remboursé ${eur(cover)}. Votre règlement de ${eur(dep)} est disponible dans votre espace, en une ou plusieurs fois.`;
+      messageEl.textContent = `Bonjour M.${NBSP}Moreau, votre mutuelle vous a remboursé ${eur(cover)}. Votre règlement de ${eur(dep)} est disponible dans votre espace, en une fois ou en 3 ou 4${NBSP}fois.`;
       const cents = Math.round(dep * 100);
       const part = Math.floor(cents / plan);
       schedule.innerHTML = Array.from({ length: plan }, (_, k) => {
@@ -401,9 +401,9 @@
   if (fees) {
     const states = [
       { status: 'Devis envoyé', kind: 'soft', message: `Bonjour M.${NBSP}Moreau, votre devis est disponible dans votre espace patient.`, live: 'Étape 1 : devis envoyé au patient.' },
-      { status: 'Accepté', kind: 'ok', iconName: 'check', message: `Merci, M.${NBSP}Moreau. Votre devis est accepté et votre carte est enregistrée, sans débit.`, live: 'Étape 2 : devis accepté, caution enregistrée sans débit.' },
-      { status: 'À régler', kind: 'warn', message: `Bonjour M.${NBSP}Moreau, voici votre lien de règlement : réglez en une ou plusieurs fois, quand votre mutuelle vous a remboursé.`, live: 'Étape 3 : sortie confirmée, lien de règlement envoyé par SMS.' },
-      { status: 'Réglé', kind: 'ok', iconName: 'check', message: `Règlement reçu. Merci, M.${NBSP}Moreau.`, live: 'Étape 4 : honoraires réglés par virement, après le remboursement de la mutuelle.' }
+      { status: 'Bien reçu', kind: 'ok', iconName: 'check', message: `Merci, M.${NBSP}Moreau. La bonne réception de votre devis est confirmée et votre carte est enregistrée, sans débit.`, live: 'Étape 2 : bonne réception du devis confirmée, caution enregistrée sans débit.' },
+      { status: 'À régler', kind: 'warn', message: `HONOLYS : votre règlement d’honoraires est disponible. Réglez en ligne, en une fois ou en 3 ou 4${NBSP}fois.`, live: 'Étape 3 : sortie confirmée, lien de règlement envoyé par SMS.' },
+      { status: 'Réglé', kind: 'ok', iconName: 'check', message: `Règlement reçu. Merci, M.${NBSP}Moreau. Votre facture et vos ordonnances postopératoires sont dans votre espace.`, live: 'Étape 4 : honoraires réglés à la sortie, par carte. Facture et ordonnances postopératoires déposées.' }
     ];
     const buttons = $$('[data-fee-step]', fees);
     const statusChip = $('[data-fee-status]', fees);
@@ -520,48 +520,48 @@
       setChip(piece('ordo'), 'line', 'À valider');
       setChip(piece('postop'), 'line', 'À valider');
       propose.removeAttribute('aria-disabled');
-      propose.innerHTML = 'Proposer au patient';
+      propose.innerHTML = 'Envoyer le lot au patient';
       empty.hidden = false;
       content.hidden = true;
-      phoneState('devis').textContent = 'À accepter';
+      phoneState('devis').textContent = 'Réception à confirmer';
       phoneState('consent').textContent = 'À signer';
       phoneTick('devis').classList.remove('is-on');
       phoneTick('consent').classList.remove('is-on');
       sign.removeAttribute('aria-disabled');
       sign.disabled = false;
-      sign.innerHTML = 'Accepter et signer <span>(simulation patient)</span>';
+      sign.innerHTML = 'Parapher et signer <span>(simulation patient)</span>';
     };
 
     propose.addEventListener('click', () => {
       if (screen.dataset.state !== 'draft') return;
       screen.dataset.state = 'sent';
       setChip(piece('ordo'), 'ok', 'Signées', 'check');
-      setChip(piece('postop'), 'soft', 'Programmées');
+      setChip(piece('postop'), 'soft', 'Après règlement');
       flash(piece('ordo'));
       flash(piece('postop'));
       propose.setAttribute('aria-disabled', 'true');
-      propose.innerHTML = `${icon('check')}Envoyé à M.${NBSP}Moreau`;
+      propose.innerHTML = `${icon('check')}Lot envoyé à M.${NBSP}Moreau`;
       empty.hidden = true;
       content.hidden = false;
       restart(content, 'is-arriving');
       phone.dataset.state = 'sent';
-      announce(live, 'Parcours envoyé à M. Moreau. Les ordonnances préopératoires sont signées par votre clic. Dans l’aperçu du téléphone, le bouton Accepter et signer est disponible.');
+      announce(live, 'Lot envoyé à M. Moreau, avec le lien du rendez-vous d’anesthésie. Les ordonnances préopératoires sont signées par votre clic. Dans l’aperçu du téléphone, le bouton Parapher et signer est disponible.');
     });
 
     sign.addEventListener('click', () => {
       if (phone.dataset.state !== 'sent') return;
       phone.dataset.state = 'signed';
-      phoneState('devis').textContent = 'Accepté';
-      phoneState('consent').textContent = 'Signé par code SMS';
+      phoneState('devis').textContent = 'Bien reçu';
+      phoneState('consent').textContent = 'Signé, pages paraphées';
       phoneTick('devis').classList.add('is-on');
       phoneTick('consent').classList.add('is-on');
-      setChip(piece('devis'), 'ok', 'Accepté', 'check');
+      setChip(piece('devis'), 'ok', 'Bien reçu', 'check');
       setChip(piece('consentement'), 'ok', 'Signé', 'check');
       flash(piece('devis'));
       flash(piece('consentement'));
       sign.setAttribute('aria-disabled', 'true');
-      sign.innerHTML = `Signé par code SMS <span>(simulation)</span>`;
-      announce(live, 'M. Moreau a accepté le devis et signé le consentement par code SMS. Simulation.');
+      sign.innerHTML = `Paraphé et signé <span>(simulation)</span>`;
+      announce(live, 'M. Moreau a paraphé chaque page, signé le consentement et confirmé la bonne réception du devis, sans code SMS. Vous êtes prévenu. Simulation.');
     });
 
     reset.addEventListener('click', () => {
@@ -594,7 +594,7 @@
       button.classList.add('is-done');
       button.innerHTML = `${icon('check')}Relancé`;
       const next = button.parentElement.querySelector('.row-next');
-      if (next) next.textContent = `Relance envoyée par SMS à 12${NBSP}h${NBSP}30`;
+      if (next) next.textContent = `Relance envoyée par courriel à 12${NBSP}h${NBSP}30`;
       announce(live, `Relance envoyée à ${button.dataset.remind}. Simulation.`);
     }));
   }
