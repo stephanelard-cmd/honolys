@@ -78,6 +78,7 @@
           <li><a href="#modules">Modules</a></li>
           <li><a href="#securite">Sécurité</a></li>
           <li><a href="#questions">Questions</a></li>
+          <li><a href="https://app.honolys.fr/abonnement">Abonnement</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -117,7 +118,7 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-stage is-playing" id="hero-stage" role="img" aria-label="Illustration, données fictives : le dossier d’honoraires de M. Moreau pour une posthectomie. Le devis de 150 euros est accepté, la caution est enregistrée sans débit, la sortie est confirmée et le lien de règlement envoyé. Quand la mutuelle a remboursé, une alerte permet de relancer le patient, puis le dossier passe à Réglé. Le téléphone du patient affiche Réglé, merci M. Moreau.">
+          <div class="hero-stage is-playing" id="hero-stage" role="img" aria-label="Illustration, données fictives : le dossier d’honoraires de M. Moreau pour une posthectomie. Le patient confirme la bonne réception du devis de 150 euros, la caution est enregistrée sans débit, la sortie est confirmée et le lien de règlement part par SMS, puis le patient règle à sa sortie et le dossier passe à Réglé. Le téléphone du patient affiche Réglé, merci M. Moreau.">
             <div class="screen hs-fees">
               <div class="screen-head">
                 <span class="app-icon"><svg class="icon"><use href="#i-euro"/></svg></span>
@@ -128,11 +129,11 @@
               <div class="split-bar"><i style="--w:66.7%"></i></div>
               <div class="split-legend"><span><i class="dot dot-teal"></i>Mutuelle (estimation) <b>100&nbsp;€</b></span><span><i class="dot dot-rail"></i>Reste à charge <b>50&nbsp;€</b></span></div>
               <ol class="h-steps">
-                <li style="--i:0"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Devis accepté par le patient</span><span class="h-step-date">3&nbsp;oct.</span></li>
+                <li style="--i:0"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Devis bien reçu par le patient</span><span class="h-step-date">3&nbsp;oct.</span></li>
                 <li style="--i:1"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Caution&nbsp;: carte enregistrée, aucun débit</span><span class="h-step-date">3&nbsp;oct.</span></li>
-                <li style="--i:2"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Sortie confirmée, lien de règlement envoyé</span><span class="h-step-date">27&nbsp;oct.</span></li>
-                <li style="--i:3"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Mutuelle remboursée&nbsp;: alerte et relance</span><span class="h-step-date">12&nbsp;nov.</span></li>
-                <li style="--i:4"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Réglé par le patient</span><span class="h-step-date">12&nbsp;nov.</span></li>
+                <li style="--i:2"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Sortie confirmée, lien de règlement par SMS</span><span class="h-step-date">27&nbsp;oct.</span></li>
+                <li style="--i:3"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Réglé par le patient à sa sortie</span><span class="h-step-date">27&nbsp;oct.</span></li>
+                <li style="--i:4"><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span><span class="h-step-text">Facture et ordonnances postopératoires déposées</span><span class="h-step-date">27&nbsp;oct.</span></li>
               </ol>
               <div class="month-total"><span>Encaissé ce mois</span><strong class="swap swap-total"><span>14&nbsp;173&nbsp;€</span><span>14&nbsp;323&nbsp;€</span></strong></div>
             </div>
@@ -143,7 +144,7 @@
                 <div class="swap swap-phone">
                   <div class="hp-wait">
                     <p class="hp-hello">Bonjour M.&nbsp;Moreau</p>
-                    <p class="hp-line">Votre règlement de 150&nbsp;€ sera demandé après le remboursement de votre mutuelle.</p>
+                    <p class="hp-line">Votre règlement de 150&nbsp;€ est disponible&nbsp;: en une fois, ou en 3 ou 4&nbsp;fois.</p>
                   </div>
                   <div class="hp-done">
                     <span class="hp-check"><svg class="icon"><use href="#i-check"/></svg></span>
@@ -168,7 +169,7 @@
       <div class="wrap constat-grid">
         <div class="constat-copy">
           <h2 id="constat-title">Trop d’outils pour un seul dossier.</h2>
-          <p>Le devis dans un logiciel, la réponse de la mutuelle par courriel, la relance au téléphone, les réversions dans un tableur, le suivi OPTAM ailleurs encore. HONOLYS remet ces étapes dans un seul fil, autour du dossier du patient.</p>
+          <p>Le devis dans un logiciel, la réponse de la mutuelle par courriel, la relance au téléphone, les reversions dans un tableur, le suivi OPTAM ailleurs encore. HONOLYS remet ces étapes dans un seul fil, autour du dossier du patient.</p>
         </div>
         <div class="thread" id="thread">
           <ul class="thread-chips" role="list" aria-label="Ce que HONOLYS relie">
@@ -177,7 +178,7 @@
             <li style="--x:18px;--y:38px;--r:7deg"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>Consentement</li>
             <li style="--x:-14px;--y:-34px;--r:5deg"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Ordonnances</li>
             <li style="--x:30px;--y:44px;--r:-6deg"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relances</li>
-            <li style="--x:-22px;--y:-40px;--r:8deg"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>Réversions</li>
+            <li style="--x:-22px;--y:-40px;--r:8deg"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>Reversions</li>
             <li style="--x:12px;--y:36px;--r:-7deg"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>OPTAM</li>
           </ul>
           <div class="thread-rail" aria-hidden="true">
@@ -193,13 +194,13 @@
       <div class="wrap">
         <div class="film-head">
           <h2 id="film-title">HONOLYS en une minute.</h2>
-          <p>Le film suit un dossier, du clic en consultation au règlement des honoraires. La bande son est musicale, sans voix off. Interfaces illustratives, données fictives.</p>
+          <p>Le film suit un dossier, du favori choisi en consultation au règlement des honoraires. La bande son est musicale, sans voix off. Interfaces illustratives, données fictives.</p>
         </div>
         <div class="film-layout">
           <div class="player" id="player">
             <video id="film-video" controls playsinline preload="none" poster="assets/video-poster-1280.webp" width="1920" height="1080" aria-label="Film de présentation HONOLYS, 1 minute">
-              <source src="assets/honolys-presentation-v5.mp4" type="video/mp4">
-              <p>Votre navigateur ne lit pas cette vidéo. <a href="assets/honolys-presentation-v5.mp4">Ouvrir le film HONOLYS (MP4, 15&nbsp;Mo)</a>.</p>
+              <source src="assets/honolys-presentation-v6.mp4" type="video/mp4">
+              <p>Votre navigateur ne lit pas cette vidéo. <a href="assets/honolys-presentation-v6.mp4">Ouvrir le film HONOLYS (MP4, 5&nbsp;Mo)</a>.</p>
             </video>
             <button class="player-cover" type="button" data-play-film>
               <img src="assets/video-poster-1280.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
@@ -212,28 +213,29 @@
             <h3 class="chapters-title" id="chapters-title">Chapitres</h3>
             <ol class="chapter-list" aria-labelledby="chapters-title">
               <li><button type="button" data-seek="0"><time>0:00</time><span>Trop d’outils</span></button></li>
-              <li><button type="button" data-seek="3"><time>0:03</time><span>Le cockpit du cabinet</span></button></li>
-              <li><button type="button" data-seek="6"><time>0:06</time><span>Le parcours en un clic</span></button></li>
-              <li><button type="button" data-seek="14"><time>0:14</time><span>La signature du patient</span></button></li>
-              <li><button type="button" data-seek="22"><time>0:22</time><span>Devis, caution et règlement</span></button></li>
-              <li><button type="button" data-seek="34"><time>0:34</time><span>Les réversions</span></button></li>
-              <li><button type="button" data-seek="40"><time>0:40</time><span>Les engagements OPTAM-ACO</span></button></li>
-              <li><button type="button" data-seek="48"><time>0:48</time><span>Les données de santé</span></button></li>
-              <li><button type="button" data-seek="52"><time>0:52</time><span>Plus de temps pour l’essentiel</span></button></li>
+              <li><button type="button" data-seek="4"><time>0:04</time><span>Le cockpit du cabinet</span></button></li>
+              <li><button type="button" data-seek="8"><time>0:08</time><span>Un favori, une plage, une date</span></button></li>
+              <li><button type="button" data-seek="16"><time>0:16</time><span>Le lot en un seul bouton</span></button></li>
+              <li><button type="button" data-seek="24"><time>0:24</time><span>Le patient paraphe et signe</span></button></li>
+              <li><button type="button" data-seek="32"><time>0:32</time><span>Le règlement à la sortie</span></button></li>
+              <li><button type="button" data-seek="42"><time>0:42</time><span>Les reversions</span></button></li>
+              <li><button type="button" data-seek="48"><time>0:48</time><span>Les engagements OPTAM-ACO</span></button></li>
+              <li><button type="button" data-seek="54"><time>0:54</time><span>Les données de santé</span></button></li>
+              <li><button type="button" data-seek="57"><time>0:57</time><span>Le cockpit unique de votre cabinet</span></button></li>
             </ol>
             <details class="transcript">
               <summary>Lire les textes affichés dans le film</summary>
               <ol>
-                <li><b>Trop de tâches, trop d’outils.</b> Devis, relances, impayés, consentements, ordonnances et OPTAM-ACO s’éparpillent.</li>
-                <li><b>Le cockpit unique de votre cabinet.</b> Honoraires, parcours patient, dossier médical et OPTAM-ACO, réunis au même endroit.</li>
-                <li><b>Un clic. Le parcours est prêt.</b> Convocation, devis, consentement, ordonnances et fiche d’information partent ensemble.</li>
-                <li><b>Votre patient signe depuis son téléphone.</b> Il lit, signe par code SMS et reçoit ses rappels. Sans papier, sans appel.</li>
-                <li><b>Vos honoraires, encaissés sans relance.</b> Devis clair, caution sans débit, règlement au bon moment.</li>
-                <li><b>Vos réversions, vérifiées ligne à ligne.</b> Les bordereaux de la clinique sont rapprochés de vos dossiers. Les écarts sont signalés.</li>
-                <li><b>Vos engagements OPTAM-ACO tenus.</b> Les deux critères de votre contrat, suivis chaque mois. Une alerte avant l’écart, un simulateur pour le combler.</li>
-                <li><b>Pensé pour les données de santé.</b> Sécurité et traçabilité, du cabinet au patient.</li>
-                <li><b>Plus de temps pour l’essentiel.</b> Honoraires, parcours patient, dossier médical, OPTAM-ACO.</li>
-                <li><b>HONOLYS, le cockpit unique de votre cabinet.</b> Demandez une démonstration sur honolys.fr. Présentation du projet, développement en cours.</li>
+                <li><b>Trop d’outils pour un seul dossier.</b> Devis, convocation, consentement, ordonnances, relances, impayés, reversions, mutuelles, planning du bloc et OPTAM-ACO s’éparpillent.</li>
+                <li><b>Le cockpit unique de votre cabinet.</b> Trois modules emboîtés autour d’un seul dossier : Honoraires, Parcours patient et Dossiers.</li>
+                <li><b>Un favori. Une plage libre. La date est fixée.</b> Choisissez l’intervention dans vos favoris, cliquez une plage du planning opératoire : date, heure et durée sont posées, le secrétariat est prévenu.</li>
+                <li><b>Un favori complet. Un seul bouton.</b> Convocation, devis, consentement, fiche d’information de la société savante et ordonnances préopératoires partent ensemble, avec le lien du rendez-vous d’anesthésie.</li>
+                <li><b>Votre patient lit, paraphe et signe.</b> Chaque page paraphée, le consentement signé, la bonne réception du devis confirmée. Sans code SMS : tout se passe dans son espace, et vous êtes prévenu.</li>
+                <li><b>Vos honoraires, réglés à la sortie.</b> Le jour de la sortie, un SMS porte le lien de règlement. Au-delà du montant que vous fixez, le patient peut choisir d’attendre le remboursement de sa mutuelle.</li>
+                <li><b>Vos reversions, rapprochées ligne à ligne.</b> Le bordereau de la clinique est comparé aux actes codés dans HONOLYS ou importés de votre logiciel. Les écarts ressortent, la comptabilité s’exporte.</li>
+                <li><b>Vos engagements OPTAM-ACO sous contrôle.</b> Les deux critères de votre contrat, suivis mois après mois. Une alerte avant l’écart, un simulateur pour le combler.</li>
+                <li><b>Pensé pour les données de santé.</b> Hébergement HDS, accès selon le rôle, actions sensibles tracées, et un parcours papier pour les patients sans internet.</li>
+                <li><b>HONOLYS, le cockpit unique de votre cabinet.</b> Demandez une présentation sur honolys.fr. Présentation du projet, développement en cours.</li>
               </ol>
             </details>
           </div>
@@ -245,16 +247,16 @@
     <section class="section mutuelle" id="mutuelle" aria-labelledby="mutuelle-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="mutuelle-title"><span>Un devis ajusté à sa mutuelle.</span> <span>Un règlement au rythme de son remboursement.</span></h2>
-          <p>Le parcours financier suit la mutuelle du patient, de ses garanties jusqu’au dernier versement. Le patient, le contrat et les montants sont fictifs.</p>
+          <h2 id="mutuelle-title"><span>Un devis ajusté à sa mutuelle.</span> <span>Un règlement à la sortie, ou après son remboursement.</span></h2>
+          <p>Le parcours financier suit la mutuelle du patient, de ses garanties jusqu’au règlement&nbsp;: à la sortie par défaut, ou après le remboursement de sa mutuelle au-delà du seuil que vous fixez. Le patient, le contrat et les montants sont fictifs.</p>
         </div>
         <div class="mutuelle-grid">
           <ol class="assets">
             <li><span class="asset-num" aria-hidden="true">1</span><span class="asset-text"><b>Les garanties importées</b>Le contrat mutuelle du patient rejoint son dossier&nbsp;: vous connaissez sa prise en charge avant de proposer le devis.</span></li>
-            <li><span class="asset-num" aria-hidden="true">2</span><span class="asset-text"><b>Le dépassement modulé</b>Vous ajustez le dépassement selon son contrat. Avant l’intervention, le patient accepte le nouveau devis.</span></li>
-            <li><span class="asset-num" aria-hidden="true">3</span><span class="asset-text"><b>Le retour de la mutuelle</b>La réponse puis le remboursement de la mutuelle remontent dans le dossier, avec l’accord du patient.</span></li>
-            <li><span class="asset-num" aria-hidden="true">4</span><span class="asset-text"><b>L’alerte et la relance</b>Vous êtes alerté dès le remboursement et vous relancez le patient en un clic.</span></li>
-            <li><span class="asset-num" aria-hidden="true">5</span><span class="asset-text"><b>Le paiement en plusieurs fois</b>Le patient règle en une ou plusieurs fois, depuis son espace, et valide lui-même son paiement.</span></li>
+            <li><span class="asset-num" aria-hidden="true">2</span><span class="asset-text"><b>Le dépassement modulé</b>Vous ajustez le dépassement selon son contrat. Le nouveau devis part seul&nbsp;; le patient en confirme la bonne réception avant l’intervention.</span></li>
+            <li><span class="asset-num" aria-hidden="true">3</span><span class="asset-text"><b>Le choix d’attendre sa mutuelle</b>Au-delà du montant que vous fixez, le patient peut cocher «&nbsp;attendre le remboursement de ma mutuelle&nbsp;» avant le devis initial. Sinon, il règle à sa sortie.</span></li>
+            <li><span class="asset-num" aria-hidden="true">4</span><span class="asset-text"><b>L’alerte et la relance</b>Avec l’accord du patient, le remboursement de sa mutuelle est détecté&nbsp;: vous êtes alerté et vous le relancez en un clic.</span></li>
+            <li><span class="asset-num" aria-hidden="true">5</span><span class="asset-text"><b>Le paiement en 1, 3 ou 4&nbsp;fois</b>Le patient règle depuis son espace, en une fois ou en 3 ou 4&nbsp;fois, et valide lui-même son paiement.</span></li>
           </ol>
           <div class="demo" data-demo="mutuelle">
             <div class="mut-tabs" role="tablist" aria-label="Étapes du parcours financier de démonstration">
@@ -302,21 +304,22 @@
                   <button class="btn btn-navy btn-sm" type="button" data-mut-fit>Ajuster au contrat</button>
                   <button class="link-btn" type="button" data-mut-usual><svg class="icon" aria-hidden="true"><use href="#i-replay"/></svg>Dépassement habituel</button>
                 </div>
-                <p class="screen-note"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>Avant l’intervention, le patient accepte le nouveau devis.</p>
+                <p class="screen-note"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>Le nouveau devis part seul&nbsp;; le patient en confirme la bonne réception avant l’intervention.</p>
               </div>
 
               <div class="mut-panel" id="mp-3" role="tabpanel" aria-labelledby="mt-3" tabindex="0">
                 <p class="mut-step-label">Étape 3&nbsp;: le remboursement</p>
+                <p class="screen-note"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>M.&nbsp;Moreau a choisi d’attendre le remboursement de sa mutuelle (seuil fixé par le praticien dans cet exemple fictif).</p>
                 <div class="alert-card">
                   <span class="alert-icon"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
                   <span class="alert-text"><b>La mutuelle de M.&nbsp;Moreau a remboursé</b><small data-mut-alert>100&nbsp;€ le jeudi 12 novembre. Règlement attendu&nbsp;: 150&nbsp;€.</small></span>
                 </div>
                 <div class="mut-actions">
-                  <button class="btn btn-navy btn-sm" type="button" data-mut-remind><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer le patient</button>
+                  <button class="btn btn-navy btn-sm" type="button" data-mut-remind><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Relancer le patient</button>
                 </div>
                 <div class="bubble" data-mut-bubble hidden>
-                  <span class="bubble-from"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Message au patient</span>
-                  <p data-mut-message>Bonjour M.&nbsp;Moreau, votre mutuelle vous a remboursé 100&nbsp;€. Votre règlement de 150&nbsp;€ est disponible dans votre espace, en une ou plusieurs fois.</p>
+                  <span class="bubble-from"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Message au patient (courriel et espace patient)</span>
+                  <p data-mut-message>Bonjour M.&nbsp;Moreau, votre mutuelle vous a remboursé 100&nbsp;€. Votre règlement de 150&nbsp;€ est disponible dans votre espace, en une fois ou en 3 ou 4&nbsp;fois.</p>
                 </div>
               </div>
 
@@ -325,7 +328,6 @@
                 <p class="mini-label" id="mut-plan-label">Le patient choisit son échéancier</p>
                 <div class="plans" role="group" aria-labelledby="mut-plan-label">
                   <button type="button" aria-pressed="false" data-plan="1">1 fois</button>
-                  <button type="button" aria-pressed="false" data-plan="2">2 fois</button>
                   <button type="button" aria-pressed="true" data-plan="3">3 fois</button>
                   <button type="button" aria-pressed="false" data-plan="4">4 fois</button>
                 </div>
@@ -360,20 +362,20 @@
             <li class="step" data-time="8&nbsp;h&nbsp;30" data-label="En consultation">
               <div class="step-text">
                 <p class="step-when"><time datetime="08:30">8&nbsp;h&nbsp;30</time><span>En consultation</span></p>
-                <h3>Un clic, et le parcours part chez le patient.</h3>
-                <p>Vous proposez une posthectomie à M.&nbsp;Moreau. Depuis vos interventions favorites, convocation, devis, consentement et ordonnances partent ensemble, validés par votre clic.</p>
+                <h3>Un seul bouton, et le lot part chez le patient.</h3>
+                <p>Vous proposez une posthectomie à M.&nbsp;Moreau. Vous choisissez le favori, puis une plage libre du planning opératoire&nbsp;: convocation, devis, consentement, fiche d’information et ordonnances préopératoires partent ensemble, par un seul bouton.</p>
                 <a class="step-link" href="#module-parcours">Voir le module Parcours patient</a>
               </div>
-              <figure class="step-figure" role="img" aria-label="Illustration : la liste des six pièces du parcours de M. Moreau, toutes prêtes, puis le bouton Proposer au patient.">
+              <figure class="step-figure" role="img" aria-label="Illustration : les pièces du lot de M. Moreau, toutes prêtes, puis le bouton Envoyer le lot au patient.">
                 <div class="screen sc-pieces">
                   <div class="screen-head"><span class="app-icon"><svg class="icon"><use href="#i-route"/></svg></span><span class="screen-title"><b>Nouveau parcours</b><small>M.&nbsp;Moreau, posthectomie</small></span><span class="code">JHFA009</span></div>
                   <ul class="pieces">
                     <li style="--i:0"><svg class="icon"><use href="#i-calendar"/></svg><span>Convocation<small>mardi 27 octobre, 7&nbsp;h&nbsp;30</small></span><span class="chip chip-ok">Prêt</span></li>
                     <li style="--i:1"><svg class="icon"><use href="#i-euro"/></svg><span>Devis<small>150&nbsp;€ réparti par code CCAM</small></span><span class="chip chip-ok">Prêt</span></li>
-                    <li style="--i:2"><svg class="icon"><use href="#i-pen"/></svg><span>Consentement éclairé<small>à signer par code SMS</small></span><span class="chip chip-ok">Prêt</span></li>
+                    <li style="--i:2"><svg class="icon"><use href="#i-pen"/></svg><span>Consentement éclairé<small>à signer dans l’espace patient</small></span><span class="chip chip-ok">Prêt</span></li>
                     <li style="--i:3"><svg class="icon"><use href="#i-file"/></svg><span>Ordonnances préopératoires<small>signées par votre clic</small></span><span class="chip chip-ok">Prêt</span></li>
                   </ul>
-                  <div class="screen-foot"><span><svg class="icon"><use href="#i-shield"/></svg>Votre clic valide et signe les ordonnances.</span><span class="fake-btn">Proposer au patient</span></div>
+                  <div class="screen-foot"><span><svg class="icon"><use href="#i-shield"/></svg>Votre clic valide et signe les ordonnances.</span><span class="fake-btn">Envoyer le lot au patient</span></div>
                 </div>
               </figure>
             </li>
@@ -381,10 +383,10 @@
             <li class="step" data-time="10&nbsp;h&nbsp;15" data-label="Chez le patient">
               <div class="step-text">
                 <p class="step-when"><time datetime="10:15">10&nbsp;h&nbsp;15</time><span>Chez le patient</span></p>
-                <h3>M.&nbsp;Moreau signe depuis son téléphone.</h3>
-                <p>Il lit chaque document, accepte le devis et signe le consentement par code SMS. Vous voyez où il en est, sans l’appeler.</p>
+                <h3>M.&nbsp;Moreau lit, paraphe et signe.</h3>
+                <p>Il paraphe chaque page, signe le consentement et confirme la bonne réception du devis, depuis son espace et sans code SMS. Vous êtes prévenu dès la signature, sans l’appeler.</p>
               </div>
-              <figure class="step-figure" role="img" aria-label="Illustration : l’espace patient de M. Moreau sur téléphone. Devis accepté, consentement éclairé signé par code SMS, ordonnances disponibles.">
+              <figure class="step-figure" role="img" aria-label="Illustration : l’espace patient de M. Moreau sur téléphone. Devis bien reçu, consentement éclairé signé dans son espace, ordonnances disponibles.">
                 <div class="device sc-phone">
                   <div class="device-screen">
                     <div class="device-bar"><span>10:15</span><span class="device-island"></span><span class="device-batt"></span></div>
@@ -393,8 +395,8 @@
                     <p class="hp-sub">Votre intervention se prépare.</p>
                     <div class="convoc"><small>Convocation</small><b>Mardi 27 octobre</b><span>Arrivée à 7&nbsp;h&nbsp;30</span><em>À jeun strict</em></div>
                     <ul class="phone-list">
-                      <li style="--i:0"><span>Devis<small>Accepté</small></span><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span></li>
-                      <li style="--i:1"><span>Consentement éclairé<small>Signé par code SMS</small></span><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span></li>
+                      <li style="--i:0"><span>Devis<small>Bien reçu</small></span><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span></li>
+                      <li style="--i:1"><span>Consentement éclairé<small>Signé, pages paraphées</small></span><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span></li>
                       <li style="--i:2"><span>Ordonnances préopératoires<small>Disponibles</small></span><span class="tick"><svg class="icon"><use href="#i-check"/></svg></span></li>
                     </ul>
                   </div>
@@ -406,16 +408,16 @@
               <div class="step-text">
                 <p class="step-when"><time datetime="12:30">12&nbsp;h&nbsp;30</time><span>Au secrétariat</span></p>
                 <h3>Le secrétariat voit ce qui manque.</h3>
-                <p>Consentement à signer, devis sans réponse, ordonnance à valider&nbsp;: chaque dossier affiche sa prochaine action. Le secrétariat relance au bon moment, sans jamais modifier le contenu médical.</p>
+                <p>Intervention à programmer à la clinique, consentement à signer, lien de règlement non ouvert&nbsp;: chaque dossier affiche sa prochaine action. Le secrétariat programme, relance au bon moment et ne modifie jamais le contenu médical.</p>
                 <a class="step-link" href="#module-secretariat">Voir le module Secrétariat</a>
               </div>
-              <figure class="step-figure" role="img" aria-label="Illustration : la liste des dossiers de la semaine vue par le secrétariat. Un dossier prêt, un consentement à signer, un devis relancé.">
+              <figure class="step-figure" role="img" aria-label="Illustration : la liste des dossiers de la semaine vue par le secrétariat. Un dossier prêt, un consentement à signer, une intervention programmée à la clinique.">
                 <div class="screen sc-secretariat">
                   <div class="screen-head"><span class="app-icon"><svg class="icon"><use href="#i-people"/></svg></span><span class="screen-title"><b>Dossiers de la semaine</b><small>Vue secrétariat</small></span></div>
                   <ul class="rows">
                     <li><span class="avatar">JM</span><span class="row-main"><b>M.&nbsp;Moreau</b><small>Posthectomie, mardi 27 oct.</small></span><span class="chip chip-ok">Prêt</span></li>
                     <li><span class="avatar">CG</span><span class="row-main"><b>Mme&nbsp;Garnier</b><small>Consentement à signer</small></span><span class="chip chip-warn">À compléter</span></li>
-                    <li class="row-remind"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois</b><small>Devis sans réponse depuis 5 jours</small></span><span class="swap swap-remind"><span class="chip chip-soft">À relancer</span><span class="chip chip-ok"><svg class="icon"><use href="#i-check"/></svg>Relancé</span></span></li>
+                    <li class="row-remind"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois</b><small>À programmer à la clinique</small></span><span class="swap swap-remind"><span class="chip chip-soft">À programmer</span><span class="chip chip-ok"><svg class="icon"><use href="#i-check"/></svg>Programmé</span></span></li>
                   </ul>
                   <p class="screen-note"><svg class="icon"><use href="#i-lock"/></svg>Contenu médical réservé au praticien</p>
                 </div>
@@ -445,13 +447,13 @@
             <li class="step" data-time="18&nbsp;h&nbsp;30" data-label="En fin de journée">
               <div class="step-text">
                 <p class="step-when"><time datetime="18:30">18&nbsp;h&nbsp;30</time><span>En fin de journée</span></p>
-                <h3>Réversions rapprochées, engagements suivis.</h3>
-                <p>Vous déposez le bordereau de réversion de la clinique&nbsp;: chaque ligne est rapprochée d’un dossier et les écarts sont signalés. Le suivi de vos engagements OPTAM s’appuie sur ces données.</p>
+                <h3>Reversions rapprochées, engagements suivis.</h3>
+                <p>Vous déposez le bordereau de reversion de la clinique&nbsp;: chaque ligne est rapprochée des actes codés dans HONOLYS ou importés de votre logiciel, et les écarts sont signalés. La comptabilité s’exporte pour votre expert-comptable.</p>
                 <a class="step-link" href="#module-optam">Voir le module OPTAM</a>
               </div>
-              <figure class="step-figure" role="img" aria-label="Illustration : le bordereau de réversion de septembre. Cinq lignes conformes et un écart de 120 euros signalé sur des biopsies de prostate.">
+              <figure class="step-figure" role="img" aria-label="Illustration : le bordereau de reversion de septembre. Cinq lignes conformes et un écart de 120 euros signalé sur des biopsies de prostate.">
                 <div class="screen sc-reversion">
-                  <div class="screen-head"><span class="app-icon"><svg class="icon"><use href="#i-list"/></svg></span><span class="screen-title"><b>Bordereau de réversion</b><small>Septembre 2026</small></span></div>
+                  <div class="screen-head"><span class="app-icon"><svg class="icon"><use href="#i-list"/></svg></span><span class="screen-title"><b>Bordereau de reversion</b><small>Septembre 2026</small></span></div>
                   <table class="mini-table">
                     <thead><tr><th scope="col">Date</th><th scope="col">Intervention</th><th scope="col">Montant</th><th scope="col"><span class="visually-hidden">Contrôle</span></th></tr></thead>
                     <tbody>
@@ -476,16 +478,16 @@
     <section class="section modules" id="modules" aria-labelledby="modules-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="modules-title">Cinq modules, un seul dossier.</h2>
-          <p>Les modules partagent le même dossier patient&nbsp;: ce qui est saisi une fois sert partout. Chaque démonstration ci-dessous se manipule, avec des données fictives.</p>
+          <h2 id="modules-title">Trois modules, un seul dossier.</h2>
+          <p>Honoraires, Parcours patient et Dossiers s’emboîtent&nbsp;: chaque module comprend le précédent. Le suivi OPTAM-ACO fait partie d’Honoraires, et le secrétariat travaille dans chacun. Ce qui est saisi une fois sert partout. Chaque démonstration ci-dessous se manipule, avec des données fictives.</p>
         </div>
 
         <div class="tabs" id="module-tabs" role="tablist" aria-label="Modules HONOLYS">
           <button class="tab" role="tab" id="tab-honoraires" aria-controls="module-honoraires" aria-selected="true" type="button"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Honoraires</button>
-          <button class="tab" role="tab" id="tab-optam" aria-controls="module-optam" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>OPTAM</button>
+          <button class="tab" role="tab" id="tab-optam" aria-controls="module-optam" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>Suivi OPTAM-ACO</button>
           <button class="tab" role="tab" id="tab-parcours" aria-controls="module-parcours" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Parcours patient</button>
           <button class="tab" role="tab" id="tab-secretariat" aria-controls="module-secretariat" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg>Secrétariat</button>
-          <button class="tab" role="tab" id="tab-dossier" aria-controls="module-dossier" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Dossier médical</button>
+          <button class="tab" role="tab" id="tab-dossier" aria-controls="module-dossier" aria-selected="false" tabindex="-1" type="button"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Dossiers</button>
           <span class="tab-indicator" aria-hidden="true"></span>
         </div>
 
@@ -493,21 +495,23 @@
         <div class="panel" id="module-honoraires" role="tabpanel" aria-labelledby="tab-honoraires" tabindex="0">
           <div class="panel-copy">
             <h3>Du devis au règlement, chaque étape suivie.</h3>
-            <p>Le devis est clair pour le patient, le règlement arrive au bon moment, et vous savez à tout instant où en est chaque dossier.</p>
+            <p>Module 1. Le devis est clair pour le patient, le règlement arrive à sa sortie, et vous savez à tout instant où en est chaque dossier.</p>
             <p><a href="honoraires-medicaux.html">Découvrir le parcours de devis et d’honoraires médicaux →</a></p>
             <ul class="ticks">
               <li>Devis réparti par code CCAM, avec l’estimation de la mutuelle</li>
               <li>Garanties mutuelle importées, dépassement modulé selon le contrat</li>
-              <li>Alerte au remboursement de la mutuelle, relance en un clic</li>
-              <li>Règlement en une ou plusieurs fois, caution facultative sans débit</li>
-              <li>Bordereaux de réversion rapprochés de vos dossiers</li>
+              <li>Lien de règlement par SMS le jour de la sortie, en 1, 3 ou 4&nbsp;fois</li>
+              <li>Au-delà de votre seuil, règlement après le remboursement de la mutuelle, avec alerte</li>
+              <li>Caution facultative, carte enregistrée sans débit</li>
+              <li>Import des reversions, comptabilité et export pour l’expert-comptable</li>
+              <li>Relances d’impayés par courriers types, à 1 puis 2&nbsp;mois</li>
             </ul>
             <p class="try">Faites avancer le dossier avec les étapes ci-contre.</p>
           </div>
           <div class="demo" data-demo="fees">
             <div class="stepper" role="group" aria-label="Étape du dossier de démonstration">
               <button type="button" aria-pressed="true" data-fee-step="0"><span>1</span>Devis envoyé</button>
-              <button type="button" aria-pressed="false" data-fee-step="1"><span>2</span>Accepté</button>
+              <button type="button" aria-pressed="false" data-fee-step="1"><span>2</span>Bien reçu</button>
               <button type="button" aria-pressed="false" data-fee-step="2"><span>3</span>Sortie</button>
               <button type="button" aria-pressed="false" data-fee-step="3"><span>4</span>Réglé</button>
             </div>
@@ -523,9 +527,9 @@
               <p class="ccam-line"><span class="code">JHFA009</span>150&nbsp;€ portés sur le code CCAM de l’intervention</p>
               <ol class="fee-timeline">
                 <li data-at="0"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Devis envoyé au patient</span><time>2&nbsp;oct.</time></li>
-                <li data-at="1"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Devis accepté, caution enregistrée sans débit</span><time>3&nbsp;oct.</time></li>
+                <li data-at="1"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Devis bien reçu, caution enregistrée sans débit</span><time>3&nbsp;oct.</time></li>
                 <li data-at="2"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Sortie confirmée, lien de règlement envoyé par SMS</span><time>27&nbsp;oct.</time></li>
-                <li data-at="3"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Réglé par virement, après le remboursement de la mutuelle</span><time>12&nbsp;nov.</time></li>
+                <li data-at="3"><span class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span><span>Réglé à la sortie, par carte</span><time>27&nbsp;oct.</time></li>
               </ol>
               <div class="bubble"><span class="bubble-from"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Message au patient</span><p data-fee-message>Bonjour M.&nbsp;Moreau, votre devis est disponible dans votre espace patient.</p></div>
             </div>
@@ -537,12 +541,13 @@
         <div class="panel" id="module-optam" role="tabpanel" aria-labelledby="tab-optam" tabindex="0">
           <div class="panel-copy">
             <h3>Vos deux engagements, suivis mois après mois.</h3>
-            <p>HONOLYS compare votre activité aux deux critères de votre contrat OPTAM ou OPTAM-ACO, et vous aide à anticiper la fin d’année.</p>
+            <p>Inclus dans Honoraires pour les signataires. HONOLYS compare votre activité aux deux critères de votre contrat OPTAM ou OPTAM-ACO, et vous aide à anticiper la fin d’année.</p>
             <p><a href="optam-aco.html">Comprendre le suivi OPTAM et OPTAM-ACO →</a></p>
             <ul class="ticks">
               <li>Taux de dépassement comparé au plafond de votre contrat</li>
               <li>Part d’activité à tarif opposable comparée à votre engagement</li>
               <li>Alerte avant l’écart, simulateur pour le combler</li>
+              <li>Imports du contrat OPTAM, des factures CCAM et des factures Carte Vitale</li>
             </ul>
             <p class="try">Faites glisser le simulateur pour voir l’effet sur vos indicateurs.</p>
           </div>
@@ -581,15 +586,18 @@
         <!-- Parcours patient -->
         <div class="panel" id="module-parcours" role="tabpanel" aria-labelledby="tab-parcours" tabindex="0">
           <div class="panel-copy">
-            <h3>Un clic, et le parcours part chez le patient.</h3>
-            <p>Vos interventions favorites préparent toutes les pièces du parcours. Vous validez une fois&nbsp;; le patient lit, signe et retrouve tout dans son espace.</p>
+            <h3>Un favori complet, un seul bouton.</h3>
+            <p>Module 2, avec Honoraires. Vos favoris, rangés par catégorie, préparent toutes les pièces du lot. Vous l’envoyez d’un clic&nbsp;; le patient lit, paraphe, signe et retrouve tout dans son espace.</p>
             <ul class="ticks">
-              <li>Convocation, devis, consentement, ordonnances et fiche d’information réunis</li>
-              <li>Signature du patient par code SMS</li>
-              <li>Ordonnances postopératoires remises à la sortie</li>
-              <li>Lien de rendez-vous avec l’anesthésiste transmis au patient</li>
+              <li>Date et heure fixées sur les plages de votre planning opératoire</li>
+              <li>Convocation, devis, consentement, fiche d’information de la société savante et ordonnances préopératoires réunis</li>
+              <li>Pages paraphées et consentement signé dans l’espace patient, sans code SMS</li>
+              <li>Lien de rendez-vous d’anesthésie joint au lot</li>
+              <li>Après le règlement&nbsp;: facture, ordonnances postopératoires et lien de consultation</li>
+              <li>Ordonnances ALD bizone, sur votre papier à en-tête (PDF ou Word)</li>
+              <li>Un parcours papier pour les patients sans internet</li>
             </ul>
-            <p class="try">Proposez le parcours, puis simulez la signature du patient.</p>
+            <p class="try">Envoyez le lot, puis simulez la signature du patient.</p>
           </div>
           <div class="demo demo-duo" data-demo="parcours">
             <div class="screen" data-parcours-screen data-state="draft">
@@ -597,21 +605,21 @@
                 <span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg></span>
                 <span class="screen-title"><b>Nouveau parcours</b><small>M.&nbsp;Moreau, patient fictif</small></span>
               </div>
-              <p class="mini-label">Vos interventions favorites</p>
+              <p class="mini-label">Vos favoris · Urologie</p>
               <div class="favs"><span class="fav is-on"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Posthectomie</span><span class="fav"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Vasectomie</span><span class="fav"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Cystoscopie</span></div>
               <div class="act-line"><b>Posthectomie</b><span class="code">JHFA009</span><span class="act-fee"><small>Dépassement habituel</small>150&nbsp;€</span></div>
-              <p class="mini-label">Document unique, 6 pièces</p>
+              <p class="mini-label">Lot de documents</p>
               <ul class="pieces">
                 <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Convocation<small>mardi 27 octobre, 7&nbsp;h&nbsp;30</small></span><span class="chip chip-ok" data-piece-state="convocation">Prête</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg><span>Devis<small>150&nbsp;€ réparti par code CCAM</small></span><span class="chip chip-ok" data-piece-state="devis">Prêt</span></li>
-                <li><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Consentement éclairé<small>à signer par code SMS</small></span><span class="chip chip-ok" data-piece-state="consentement">Prêt</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Consentement éclairé<small>à signer dans l’espace patient</small></span><span class="chip chip-ok" data-piece-state="consentement">Prêt</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Ordonnances préopératoires<small>signées par votre clic</small></span><span class="chip chip-line" data-piece-state="ordo">À valider</span></li>
-                <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Ordonnances postopératoires<small>remises à la sortie</small></span><span class="chip chip-line" data-piece-state="postop">À valider</span></li>
-                <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Fiche d’information<small>liée à l’intervention</small></span><span class="chip chip-ok" data-piece-state="fiche">Prête</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Ordonnances postopératoires<small>déposées après le règlement</small></span><span class="chip chip-line" data-piece-state="postop">À valider</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Fiche d’information<small>de la société savante</small></span><span class="chip chip-ok" data-piece-state="fiche">Prête</span></li>
               </ul>
               <div class="screen-foot">
                 <span><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Votre clic valide et signe les ordonnances.</span>
-                <button class="btn btn-navy btn-sm" type="button" data-parcours-propose>Proposer au patient</button>
+                <button class="btn btn-navy btn-sm" type="button" data-parcours-propose>Envoyer le lot au patient</button>
               </div>
             </div>
             <div class="device device-demo" data-parcours-phone data-state="empty">
@@ -624,12 +632,12 @@
                   <p class="hp-sub">Votre intervention se prépare.</p>
                   <div class="convoc"><small>Convocation</small><b>Mardi 27 octobre</b><span>Arrivée à 7&nbsp;h&nbsp;30</span><em>À jeun strict</em></div>
                   <ul class="phone-list">
-                    <li><span>Devis<small data-phone-state="devis">À accepter</small></span><span class="tick" data-phone-tick="devis"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></li>
+                    <li><span>Devis<small data-phone-state="devis">Réception à confirmer</small></span><span class="tick" data-phone-tick="devis"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></li>
                     <li><span>Consentement éclairé<small data-phone-state="consent">À signer</small></span><span class="tick" data-phone-tick="consent"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></li>
                     <li><span>Ordonnances préopératoires<small>Disponibles</small></span><span class="tick is-on"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></li>
                     <li><span>Rendez-vous d’anesthésie<small>Lien transmis</small></span><span class="tick is-on"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span></li>
                   </ul>
-                  <button class="phone-btn" type="button" data-parcours-sign>Accepter et signer <span>(simulation patient)</span></button>
+                  <button class="phone-btn" type="button" data-parcours-sign>Parapher et signer <span>(simulation patient)</span></button>
                 </div>
               </div>
             </div>
@@ -642,10 +650,12 @@
         <div class="panel" id="module-secretariat" role="tabpanel" aria-labelledby="tab-secretariat" tabindex="0">
           <div class="panel-copy">
             <h3>Le secrétariat voit ce qui manque, sans toucher au médical.</h3>
-            <p>Une vue dédiée pour organiser les parcours, suivre les pièces et relancer au bon moment. La décision et le contenu médical restent au praticien.</p>
+            <p>Dans chaque module, une vue dédiée pour programmer les interventions à la clinique, suivre les pièces et relancer au bon moment. La décision et le contenu médical restent au praticien.</p>
             <ul class="ticks">
               <li>Dossiers à compléter, à relancer ou prêts, en un regard</li>
-              <li>Relances au patient en un clic</li>
+              <li>Interventions à programmer à la clinique, cochées «&nbsp;Programmé&nbsp;» une fois saisies</li>
+              <li>Relances au patient en un clic, par courriel et dans son espace</li>
+              <li>Messagerie avec le praticien et avec les patients</li>
               <li>Ordonnances et documents médicaux validés par le praticien seul</li>
             </ul>
             <p class="try">Filtrez les dossiers, puis relancez un patient.</p>
@@ -665,7 +675,7 @@
               <ul class="rows dossier-rows" data-dossiers>
                 <li data-status="ready"><span class="avatar">JM</span><span class="row-main"><b>M.&nbsp;Moreau</b><small>Posthectomie, mardi 27 oct.</small></span><span class="row-next">Convocation envoyée</span><span class="chip chip-ok">Prêt</span></li>
                 <li data-status="todo"><span class="avatar">CG</span><span class="row-main"><b>Mme&nbsp;Garnier</b><small>Cystoscopie, mercredi 28 oct.</small></span><span class="row-next">Consentement à signer</span><span class="chip chip-warn">À compléter</span></li>
-                <li data-status="remind"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois</b><small>Urétéroscopie, jeudi 29 oct.</small></span><span class="row-next">Devis sans réponse depuis 5 jours</span><button class="chip-btn" type="button" data-remind="M. Dubois"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
+                <li data-status="remind"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois</b><small>Urétéroscopie, jeudi 29 oct.</small></span><span class="row-next">Bonne réception du devis en attente depuis 5 jours</span><button class="chip-btn" type="button" data-remind="M. Dubois"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
                 <li data-status="todo"><span class="avatar">AR</span><span class="row-main"><b>M.&nbsp;Roux</b><small>Biopsies de prostate, vendredi 30 oct.</small></span><span class="row-next"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Ordonnance à valider par le praticien</span><span class="chip chip-warn">À compléter</span></li>
                 <li data-status="remind"><span class="avatar">SL</span><span class="row-main"><b>Mme&nbsp;Laurent</b><small>Urétéroscopie, lundi 2 nov.</small></span><span class="row-next">Lien de règlement non ouvert</span><button class="chip-btn" type="button" data-remind="Mme Laurent"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
                 <li data-status="ready"><span class="avatar">TP</span><span class="row-main"><b>M.&nbsp;Petit</b><small>Vasectomie, mardi 3 nov.</small></span><span class="row-next">Dossier complet</span><span class="chip chip-ok">Prêt</span></li>
@@ -680,7 +690,7 @@
         <div class="panel" id="module-dossier" role="tabpanel" aria-labelledby="tab-dossier" tabindex="0">
           <div class="panel-copy">
             <h3>L’essentiel du patient, au même endroit.</h3>
-            <p>Comptes rendus, ordonnances, examens et chronologie sont réunis autour du patient. Ce qu’il envoie arrive dans son dossier, et vous le validez.</p>
+            <p>Module 3, avec Honoraires et Parcours patient. Comptes rendus, ordonnances, examens et chronologie sont réunis autour du patient. Ce qu’il envoie arrive dans son dossier, et vous le validez. Ce module est en préparation.</p>
             <ul class="ticks">
               <li>Comptes rendus et ordonnances validés par le praticien</li>
               <li>Examens envoyés par le patient, classés après votre validation</li>
@@ -715,14 +725,14 @@
               <div class="subpanel" id="dm-panel-2" role="tabpanel" aria-labelledby="dm-tab-2" hidden>
                 <ul class="doc-list" data-doc-list>
                   <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Compte rendu de consultation<small>2 octobre</small></span><span class="chip chip-ok">Validé</span></li>
-                  <li><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Consentement éclairé<small>Signé par code SMS le 3 octobre</small></span><span class="chip chip-ok">Signé</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg><span>Consentement éclairé<small>Signé dans l’espace patient le 3 octobre</small></span><span class="chip chip-ok">Signé</span></li>
                   <li><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span>Ordonnances préopératoires<small>3 octobre</small></span><span class="chip chip-ok">Signées</span></li>
                 </ul>
               </div>
               <div class="subpanel" id="dm-panel-3" role="tabpanel" aria-labelledby="dm-tab-3" hidden>
                 <ol class="chrono">
                   <li><time>2 oct.</time><span>Consultation et indication opératoire</span></li>
-                  <li><time>3 oct.</time><span>Devis accepté, consentement signé</span></li>
+                  <li><time>3 oct.</time><span>Devis bien reçu, consentement signé</span></li>
                   <li><time>27 oct.</time><span>Intervention, sortie le jour même</span></li>
                   <li><time>10 nov.</time><span>Consultation postopératoire</span></li>
                 </ol>
@@ -753,13 +763,13 @@
             <span class="role-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span>
             <h3>Le secrétariat</h3>
             <p class="role-verb">Organise et relance</p>
-            <p>Pièces à compléter, rendez-vous, relances et règlements au cabinet, sans jamais modifier le contenu médical.</p>
+            <p>Programmation à la clinique, pièces à compléter, relances et règlements au cabinet, sans jamais modifier le contenu médical.</p>
           </div>
           <div class="role">
             <span class="role-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
             <h3>Le patient</h3>
             <p class="role-verb">Comprend et avance</p>
-            <p>Il lit, signe et règle depuis son téléphone. Il transmet la réponse de sa mutuelle et ses examens.</p>
+            <p>Il lit, paraphe, signe et règle depuis son téléphone. Il transmet ses garanties de mutuelle et ses examens. Sans internet, un parcours papier prend le relais.</p>
           </div>
         </div>
         <div class="apps">
@@ -875,19 +885,19 @@
           </details>
           <details>
             <summary>Puis-je adapter mon dépassement à la mutuelle du patient&nbsp;?</summary>
-            <p>Oui. Les garanties du patient sont importées dans son dossier&nbsp;: vous voyez la prise en charge estimée et le reste à charge, puis vous ajustez le dépassement si vous le souhaitez. Avant l’intervention, le patient accepte le nouveau devis.</p>
+            <p>Oui. Les garanties du patient sont importées dans son dossier&nbsp;: vous voyez la prise en charge estimée et le reste à charge, puis vous ajustez le dépassement si vous le souhaitez. Le nouveau devis part seul&nbsp;; le patient en confirme la bonne réception avant l’intervention.</p>
           </details>
           <details>
             <summary>Comment suis-je prévenu du remboursement de la mutuelle&nbsp;?</summary>
-            <p>Avec l’accord du patient, le remboursement de sa mutuelle est signalé dans son dossier et vous recevez une alerte. Vous pouvez alors relancer le patient en un clic. Aucun paiement n’est déclenché sans sa validation.</p>
+            <p>Par défaut, le patient règle à sa sortie. Au-delà du montant que vous fixez, il peut choisir d’attendre le remboursement de sa mutuelle&nbsp;: avec son accord, ce remboursement est détecté et vous recevez une alerte. Vous pouvez alors le relancer en un clic. Aucun paiement n’est déclenché sans sa validation.</p>
           </details>
           <details>
             <summary>Mes patients peuvent-ils régler en plusieurs fois&nbsp;?</summary>
-            <p>Oui, si vous le proposez&nbsp;: le patient choisit son échéancier depuis son espace, en une ou plusieurs fois.</p>
+            <p>Oui, si vous le proposez&nbsp;: le patient règle depuis son espace, en une fois ou en 3 ou 4&nbsp;fois.</p>
           </details>
           <details>
             <summary>Mes patients doivent-ils installer une application&nbsp;?</summary>
-            <p>Non. Le patient suit son parcours depuis un lien personnel, sur son téléphone ou son ordinateur. Une application HONOLYS Patient est en préparation.</p>
+            <p>Non. Le patient suit son parcours depuis un lien personnel, sur son téléphone ou son ordinateur. Une application HONOLYS Patient est en préparation. Pour un patient sans internet, le cabinet bascule sur un parcours papier&nbsp;: documents imprimés, signés à la main puis numérisés.</p>
           </details>
           <details>
             <summary>Le secrétariat peut-il modifier le dossier médical&nbsp;?</summary>
@@ -969,6 +979,7 @@
         <li><a href="#securite">Sécurité et établissement de soins</a></li>
         <li><a href="#vision">Le fondateur</a></li>
         <li><a href="#questions">Questions</a></li>
+        <li><a href="https://app.honolys.fr/abonnement">Abonnement</a></li>
       </ul>
     </nav>
     <div class="menu-actions">
