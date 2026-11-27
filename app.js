@@ -705,7 +705,7 @@
   }
   $$('[data-info]').forEach((button) => button.addEventListener('click', () => openDialog(infoDialog, button)));
 
-  /* ---------- Contact (courriel préparé, aucune donnée enregistrée) ---------- */
+  /* ---------- Contact : envoi direct par le serveur HONOLYS, WhatsApp en option ---------- */
   const form = $('#contact-form');
   let lastMessage = '';
   if (contactDialog && form) {
@@ -713,7 +713,20 @@
     const messageLabel = $('[data-message-label]', form);
     const message = $('#f-message');
     const name = $('#f-name');
+    const email = $('#f-email');
     const sent = $('#contact-sent');
+    const fallback = $('#contact-fallback');
+    const formError = $('#contact-error');
+    const sendButton = $('[data-send]', form);
+    const whatsappButton = $('[data-whatsapp-btn]', form);
+    const endpoint = form.dataset.endpoint;
+    // Numéro WhatsApp de HONOLYS (attribut data-whatsapp du formulaire), au format
+    // international en chiffres seuls (ex. 33912345678). Vide : bouton masqué.
+    const WHATSAPP_NUMERO = String(form.dataset.whatsapp || '').replace(/\D/g, '').replace(/^0(\d{9})$/, '33$1');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (whatsappButton && /^\d{8,15}$/.test(WHATSAPP_NUMERO)) whatsappButton.hidden = false;
+
+    const resetStatus = () => { sent.hidden = true; fallback.hidden = true; formError.hidden = true; formError.textContent = ''; };
     const setIntent = (intent) => {
       const question = intent === 'question';
       $$('input[name="intent"]', form).forEach((radio) => { radio.checked = radio.value === (question ? 'question' : 'presentation'); });
@@ -727,42 +740,124 @@
     };
     $$('[data-contact]').forEach((button) => button.addEventListener('click', () => {
       setIntent(button.dataset.contact);
-      sent.hidden = true;
+      resetStatus();
       openDialog(contactDialog, button);
       window.setTimeout(() => name.focus(), 30);
     }));
     $$('input[name="intent"]', form).forEach((radio) => radio.addEventListener('change', () => setIntent(radio.value)));
     name.addEventListener('input', () => { if (name.value.trim()) showError(name, 'f-name-error', false); });
+    email.addEventListener('input', () => { if (emailPattern.test(email.value.trim())) showError(email, 'f-email-error', false); });
     message.addEventListener('input', () => { if (message.value.trim()) showError(message, 'f-message-error', false); });
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
+    /** Lit et vérifie le formulaire ; renvoie null et place le focus sur le premier champ à corriger. */
+    const readForm = () => {
       const data = new FormData(form);
-      const intent = String(data.get('intent') || 'presentation');
       const value = (key) => String(data.get(key) || '').trim();
+      const intent = value('intent') === 'question' ? 'question' : 'presentation';
       const nameOk = Boolean(value('name'));
+      const emailOk = emailPattern.test(value('email'));
       const messageOk = intent !== 'question' || Boolean(value('message'));
       showError(name, 'f-name-error', !nameOk);
+      showError(email, 'f-email-error', !emailOk);
       showError(message, 'f-message-error', !messageOk);
-      if (!nameOk) { name.focus(); return; }
-      if (!messageOk) { message.focus(); return; }
-      const subject = intent === 'question' ? 'Question sur HONOLYS' : 'Demande de présentation HONOLYS';
+      if (!nameOk) { name.focus(); return null; }
+      if (!emailOk) { email.focus(); return null; }
+      if (!messageOk) { message.focus(); return null; }
+      return {
+        intention: intent,
+        nom: value('name'),
+        email: value('email'),
+        specialite: value('specialty'),
+        lieu: value('place'),
+        telephone: value('phone'),
+        message: value('message'),
+        site: value('site'),
+      };
+    };
+    const composeText = (d) => {
       const lines = [
         'Bonjour,',
         '',
-        intent === 'question' ? 'J’ai une question sur HONOLYS.' : 'Je souhaite une présentation de HONOLYS.',
+        d.intention === 'question' ? 'J’ai une question sur HONOLYS.' : 'Je souhaite une présentation de HONOLYS.',
         '',
-        `Nom : ${value('name')}`
+        `Nom : ${d.nom}`,
+        `E-mail : ${d.email}`
       ];
-      if (value('specialty')) lines.push(`Spécialité : ${value('specialty')}`);
-      if (value('place')) lines.push(`Ville ou établissement : ${value('place')}`);
-      if (value('phone')) lines.push(`Téléphone : ${value('phone')}`);
-      if (value('message')) lines.push('', value('message'));
-      lines.push('', 'Bien cordialement,', value('name'));
-      const text = lines.join('\n');
+      if (d.specialite) lines.push(`Spécialité : ${d.specialite}`);
+      if (d.lieu) lines.push(`Ville ou établissement : ${d.lieu}`);
+      if (d.telephone) lines.push(`Téléphone : ${d.telephone}`);
+      if (d.message) lines.push('', d.message);
+      lines.push('', 'Bien cordialement,', d.nom);
+      return lines.join('\n');
+    };
+    const subjectOf = (d) => (d.intention === 'question' ? 'Question sur HONOLYS' : 'Demande de présentation HONOLYS');
+
+    /** Envoi au serveur HONOLYS : { ok } ou { ok: false, statut, erreur }. statut 0 = serveur injoignable. */
+    const sendRequest = async (d) => {
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'omit',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(d),
+          signal: controller.signal
+        });
+        const body = await response.json().catch(() => ({}));
+        return response.ok && body.ok === true ? { ok: true } : { ok: false, statut: response.status, erreur: typeof body.erreur === 'string' ? body.erreur : '' };
+      } catch (error) {
+        return { ok: false, statut: 0, erreur: '' };
+      } finally {
+        window.clearTimeout(timer);
+      }
+    };
+    const setBusy = (busy) => {
+      sendButton.disabled = busy;
+      sendButton.setAttribute('aria-busy', busy ? 'true' : 'false');
+      $('span', sendButton).textContent = busy ? 'Envoi en cours…' : 'Envoyer ma demande';
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (sendButton.disabled) return;
+      resetStatus();
+      const d = readForm();
+      if (!d) return;
+      const subject = subjectOf(d);
+      const text = composeText(d);
       lastMessage = `Objet : ${subject}\n\n${text}`;
-      sent.hidden = false;
+      setBusy(true);
+      const result = await sendRequest(d);
+      setBusy(false);
+      if (result.ok) {
+        $('[data-sent-email]', sent).textContent = d.email;
+        sent.hidden = false;
+        sent.focus();
+        message.value = '';
+        announce(globalLive, 'Votre demande est envoyée.');
+        return;
+      }
+      // Refus explicite du serveur (champ à corriger, demandes trop rapprochées) : on l'affiche.
+      if ((result.statut === 400 || result.statut === 429) && result.erreur) {
+        formError.textContent = result.erreur;
+        formError.hidden = false;
+        return;
+      }
+      // Serveur injoignable ou envoi indisponible : repli sur la messagerie du visiteur.
+      fallback.hidden = false;
+      fallback.focus();
       window.location.href = `mailto:contact@honolys.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    });
+
+    if (whatsappButton) whatsappButton.addEventListener('click', () => {
+      resetStatus();
+      const d = readForm();
+      if (!d || !WHATSAPP_NUMERO) return;
+      const text = `${subjectOf(d)}\n\n${composeText(d)}`;
+      lastMessage = text;
+      window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
     });
   }
 
