@@ -60,31 +60,84 @@
     const subjects = {presentation:'Demande de présentation HONOLYS',tarifs:'Tarifs et périmètre HONOLYS',question:'Question sur HONOLYS',retour:'Retour sur le projet HONOLYS',donnees:'Demande relative à mes données',acces:'Problème d’accès à HONOLYS'};
     const intent = new URLSearchParams(location.search).get('objet');
     if (Object.hasOwn(subjects, intent)) $('#contact-intent').value = intent;
+    const endpoint = form.dataset.endpoint;
+    // Numéro WhatsApp de HONOLYS (attribut data-whatsapp), chiffres seuls au format international. Vide : bouton masqué.
+    const whatsapp = String(form.dataset.whatsapp || '').replace(/\D/g, '').replace(/^0(\d{9})$/, '33$1');
+    const sendButton = form.querySelector('[data-send]');
+    const whatsappButton = form.querySelector('[data-whatsapp-btn]');
+    if (whatsappButton && /^\d{8,15}$/.test(whatsapp)) whatsappButton.hidden = false;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let prepared = '';
-    const invalidate = () => { $('#message-result').hidden = true; prepared = ''; };
-    form.addEventListener('input', invalidate);
-    form.addEventListener('change', invalidate);
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
+    const resetStatus = () => { $('#message-result').hidden = true; $('#message-sent').hidden = true; $('#message-error').hidden = true; prepared = ''; };
+    form.addEventListener('input', resetStatus);
+    form.addEventListener('change', resetStatus);
+    const read = () => {
       const data = new FormData(form);
       const value = key => String(data.get(key) || '').trim();
-      if (!value('name')) { $('#contact-name').focus(); announce('Indiquez votre nom.'); return; }
-      if (!value('message')) { $('#contact-message').focus(); announce('Écrivez votre message.'); return; }
-      const subject = subjects[value('intent')] || subjects.question;
-      const lines = ['Bonjour,','',value('message'),'','Nom : ' + value('name')];
-      if (value('specialty')) lines.push('Spécialité : ' + value('specialty'));
-      if (value('place')) lines.push('Ville ou établissement : ' + value('place'));
-      if (value('phone')) lines.push('Téléphone : ' + value('phone'));
-      lines.push('','Bien cordialement,',value('name'));
-      const body = lines.join('\n');
+      if (!value('name')) { $('#contact-name').focus(); announce('Indiquez votre nom.'); return null; }
+      if (!emailPattern.test(value('email'))) { $('#contact-email').focus(); announce('Indiquez une adresse e-mail valide.'); return null; }
+      if (!value('message')) { $('#contact-message').focus(); announce('Écrivez votre message.'); return null; }
+      const intention = Object.hasOwn(subjects, value('intent')) ? value('intent') : 'question';
+      return {intention, nom:value('name'), email:value('email'), specialite:value('specialty'), lieu:value('place'), telephone:value('phone'), message:value('message'), site:value('site')};
+    };
+    const compose = d => {
+      const lines = ['Bonjour,','',d.message,'','Nom : ' + d.nom,'E-mail : ' + d.email];
+      if (d.specialite) lines.push('Spécialité : ' + d.specialite);
+      if (d.lieu) lines.push('Ville ou établissement : ' + d.lieu);
+      if (d.telephone) lines.push('Téléphone : ' + d.telephone);
+      lines.push('','Bien cordialement,',d.nom);
+      return lines.join('\n');
+    };
+    const send = async d => {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch(endpoint, {method:'POST', mode:'cors', credentials:'omit', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d), signal:controller.signal});
+        const body = await response.json().catch(() => ({}));
+        return response.ok && body.ok === true ? {ok:true} : {ok:false, statut:response.status, erreur:typeof body.erreur === 'string' ? body.erreur : ''};
+      } catch { return {ok:false, statut:0, erreur:''}; }
+      finally { clearTimeout(timer); }
+    };
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (sendButton.disabled) return;
+      resetStatus();
+      const d = read();
+      if (!d) return;
+      const label = sendButton.querySelector('span');
+      sendButton.disabled = true; sendButton.setAttribute('aria-busy','true'); label.textContent = 'Envoi en cours…';
+      const result = await send(d);
+      sendButton.disabled = false; sendButton.setAttribute('aria-busy','false'); label.textContent = 'Envoyer mon message →';
+      if (result.ok) {
+        $('#message-sent [data-sent-email]').textContent = d.email;
+        $('#message-sent').hidden = false;
+        $('#message-sent').focus();
+        $('#contact-message').value = '';
+        announce('Votre message est envoyé.');
+        return;
+      }
+      if ((result.statut === 400 || result.statut === 429) && result.erreur) {
+        $('#message-error').textContent = result.erreur;
+        $('#message-error').hidden = false;
+        announce(result.erreur);
+        return;
+      }
+      // Serveur injoignable ou envoi indisponible : message prêt à envoyer depuis la messagerie.
+      const subject = subjects[d.intention];
+      const body = compose(d);
       prepared = `À : contact@honolys.fr\nObjet : ${subject}\n\n${body}`;
       $('#message-text').textContent = prepared;
       $('#message-mailto').href = `mailto:contact@honolys.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       $('#message-copy').textContent = 'Copier le message';
       $('#message-result').hidden = false;
       $('#message-result').focus();
-      announce('Message préparé. Aucun courriel n’a été envoyé.');
+      announce('L’envoi direct n’a pas abouti. Votre message est prêt à envoyer depuis votre messagerie.');
+    });
+    if (whatsappButton) whatsappButton.addEventListener('click', () => {
+      resetStatus();
+      const d = read();
+      if (!d || !whatsapp) return;
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(subjects[d.intention] + '\n\n' + compose(d))}`, '_blank', 'noopener');
     });
     $('#message-copy').addEventListener('click', event => { if (prepared) copy(prepared, event.currentTarget); });
   }
