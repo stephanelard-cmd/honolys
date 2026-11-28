@@ -199,18 +199,35 @@
     $$('.is-pending').forEach((element) => element.classList.remove('is-pending'));
   });
 
-  /* ---------- Onglets des modules ---------- */
+  /* ---------- Démonstrations à choisir dans un module (Honoraires : règlement ou OPTAM-ACO) ---------- */
+  const showSubDemo = (target, animate = true) => {
+    const zone = target && target.closest('.demo-zone');
+    if (!zone) return;
+    $$('[data-show]', zone).forEach((button) => {
+      const on = button.dataset.show === target.id;
+      button.setAttribute('aria-pressed', String(on));
+      const demo = document.getElementById(button.dataset.show);
+      if (demo) demo.hidden = !on;
+    });
+    if (animate) restart(target, 'is-entering');
+  };
+  $$('.demo-switch [data-show]').forEach((button) => button.addEventListener('click', () => {
+    const target = document.getElementById(button.dataset.show);
+    if (target) showSubDemo(target);
+  }));
+  $$('.demo-switch').forEach((group) => {
+    const first = $('[data-show]', group);
+    const target = first && document.getElementById(first.dataset.show);
+    if (target) showSubDemo(target, false);
+  });
+
+  /* ---------- Modules : cartes, panneaux et comparatif ---------- */
   const tablist = $('#module-tabs');
   const tabs = tablist ? $$('[role="tab"]', tablist) : [];
   const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
-  const indicator = tablist ? $('.tab-indicator', tablist) : null;
+  const compareTable = $('[data-compare]');
   let currentTab = 0;
 
-  const moveIndicator = () => {
-    if (!indicator || !tabs[currentTab]) return;
-    indicator.style.setProperty('--ix', `${tabs[currentTab].offsetLeft}px`);
-    indicator.style.setProperty('--iw', `${tabs[currentTab].offsetWidth}px`);
-  };
   const keepTabVisible = (tab) => {
     if (tablist.scrollWidth <= tablist.clientWidth) return;
     const left = tab.offsetLeft - 24;
@@ -227,10 +244,24 @@
       tab.tabIndex = on ? 0 : -1;
       if (panels[i]) panels[i].hidden = !on;
     });
+    if (compareTable) compareTable.dataset.active = String(index + 1);
     if (animate) restart(panels[index], 'is-entering');
     if (focus) tabs[index].focus();
-    moveIndicator();
     keepTabVisible(tabs[index]);
+  };
+  // Ouvre le module qui contient l'élément visé (panneau ou démonstration interne, par ex. #module-optam).
+  const panelIndexOf = (id) => {
+    const target = id ? document.getElementById(id) : null;
+    if (!target) return { index: -1, target: null };
+    return { index: panels.findIndex((panel) => panel && panel.contains(target)), target };
+  };
+  const revealInModules = (id, { scroll = false, animate = true } = {}) => {
+    const { index, target } = panelIndexOf(id);
+    if (index < 0) return false;
+    selectTab(index, { animate });
+    if (target.hasAttribute('data-subdemo')) showSubDemo(target, animate);
+    if (scroll) scrollToElement(tablist);
+    return true;
   };
   if (tabs.length) {
     tabs.forEach((tab, index) => {
@@ -240,8 +271,8 @@
       });
       tab.addEventListener('keydown', (event) => {
         let next = null;
-        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-        else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + tabs.length) % tabs.length;
         else if (event.key === 'Home') next = 0;
         else if (event.key === 'End') next = tabs.length - 1;
         if (next === null) return;
@@ -249,20 +280,24 @@
         selectTab(next, { focus: true });
       });
     });
-    const fromHash = panels.findIndex((panel) => panel && `#${panel.id}` === window.location.hash);
-    selectTab(fromHash >= 0 ? fromHash : 0, { animate: false });
-    if (fromHash >= 0) window.requestAnimationFrame(() => scrollToElement(tablist));
-    window.addEventListener('resize', moveIndicator, { passive: true });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+    let hashId = '';
+    try { hashId = decodeURIComponent(window.location.hash.slice(1)); } catch (error) { hashId = ''; }
+    if (revealInModules(hashId, { animate: false })) window.requestAnimationFrame(() => scrollToElement(tablist));
+    else selectTab(0, { animate: false });
 
-    // Liens « Voir le module … » depuis la journée
+    window.addEventListener('hashchange', () => {
+      let id = '';
+      try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (error) { id = ''; }
+      revealInModules(id, { scroll: true });
+    });
+
+    // Liens « Voir le module … » de la journée : ouvrent le bon module (et la bonne démonstration).
     $$('a[href^="#module-"]').forEach((link) => link.addEventListener('click', (event) => {
-      const index = panels.findIndex((panel) => panel && `#${panel.id}` === link.getAttribute('href'));
-      if (index < 0) return;
+      const id = link.getAttribute('href').slice(1);
+      if (!revealInModules(id, { scroll: true })) return; // ex. #module-secretariat : ancre simple
       event.preventDefault();
-      selectTab(index, { animate: true });
-      scrollToElement(tablist);
-      try { history.replaceState(null, '', link.getAttribute('href')); } catch (error) { /* page intégrée */ }
+      try { history.replaceState(null, '', `#${id}`); } catch (error) { /* page intégrée */ }
+      const { index } = panelIndexOf(id);
       try { panels[index].focus({ preventScroll: true }); } catch (error) { panels[index].focus(); }
     }));
   }
