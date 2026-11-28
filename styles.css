@@ -839,6 +839,25 @@ input[type="range"]:focus-visible { outline: 3px solid var(--navy); outline-offs
 .filters button:hover { color: var(--s-ink); background: var(--s-bg-2); }
 .filters button[aria-pressed="true"] { background: var(--navy); color: #ffffff; box-shadow: none; }
 .filters button[aria-pressed="true"] span { background: var(--teal); color: var(--deep); }
+/* Secrétariat de plusieurs praticiens (28/11/2026) */
+[data-demo="secretariat"] { grid-template-columns: minmax(0, 1fr); }
+[data-demo="secretariat"] > .screen { min-width: 0; }
+.filters-doc { padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid var(--s-line); }
+.filters-doc button { min-height: 40px; padding: 6px 12px; font-size: 14px; }
+.doc-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.doc-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 99px; font-size: 12px; font-weight: 750; line-height: 1.5; vertical-align: 1px; white-space: nowrap; }
+.doc-a.doc-dot { background: #1f9aa2; }
+.doc-b.doc-dot { background: #d9822b; }
+.doc-c.doc-dot { background: #6a5acd; }
+.doc-a.doc-tag { background: var(--s-teal-bg); color: var(--s-teal-ink); }
+.doc-b.doc-tag { background: var(--s-amber-bg); color: var(--s-amber-ink); }
+.doc-c.doc-tag { background: #eeebfa; color: #4b3f8a; }
+@media (max-width: 720px) {
+  .filters-doc { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -4px; padding-inline: 4px; }
+  .filters-doc::-webkit-scrollbar { display: none; }
+  .filters-doc button { flex: none; padding: 5px 11px; font-size: 13.5px; }
+  .doc-tag { display: table; margin: 2px 0 1px; }
+}
 .filters button:focus-visible { outline-color: var(--navy); }
 .dossier-rows li { grid-template-columns: 38px minmax(0, 1.1fr) minmax(0, 1fr) auto; }
 .dossier-rows li[hidden] { display: none; }

@@ -365,7 +365,7 @@
                 <p class="step-when"><time datetime="08:30">8&nbsp;h&nbsp;30</time><span>En consultation</span></p>
                 <h3>Un seul bouton, et le lot part chez le patient.</h3>
                 <p>Vous proposez une posthectomie à M.&nbsp;Moreau. Vous choisissez le favori, puis une plage libre du planning opératoire&nbsp;: convocation, devis, consentement, fiche d’information et ordonnances préopératoires partent ensemble, par un seul bouton.</p>
-                <a class="step-link" href="#module-parcours">Voir le module Parcours patient</a>
+                <a class="step-link" href="#module-parcours">Voir le module Programmation</a>
               </div>
               <figure class="step-figure" role="img" aria-label="Illustration : les pièces du lot de M. Moreau, toutes prêtes, puis le bouton Envoyer le lot au patient.">
                 <div class="screen sc-pieces">
@@ -410,7 +410,7 @@
                 <p class="step-when"><time datetime="12:30">12&nbsp;h&nbsp;30</time><span>Au secrétariat</span></p>
                 <h3>Le secrétariat voit ce qui manque.</h3>
                 <p>Intervention à programmer à la clinique, consentement à signer, lien de règlement non ouvert&nbsp;: chaque dossier affiche sa prochaine action. Le secrétariat programme, relance au bon moment et ne modifie jamais le contenu médical.</p>
-                <a class="step-link" href="#module-secretariat">Voir la vue Secrétariat, commune aux trois modules</a>
+                <a class="step-link" href="#module-secretariat">Voir le secrétariat pour plusieurs praticiens</a>
               </div>
               <figure class="step-figure" role="img" aria-label="Illustration : la liste des dossiers de la semaine vue par le secrétariat. Un dossier prêt, un consentement à signer, une intervention programmée à la clinique.">
                 <div class="screen sc-secretariat">
@@ -480,7 +480,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2 id="modules-title">Trois modules, un seul dossier.</h2>
-          <p>Commencez par Honoraires, ajoutez le Parcours patient, puis les Dossiers&nbsp;: chaque module reprend tout le précédent, et ce qui est saisi une fois sert partout. Choisissez un module pour voir ce qu’il comprend et le manipuler, avec des données fictives.</p>
+          <p>Commencez par Honoraires, ajoutez la Programmation, puis les Dossiers&nbsp;: chaque module reprend tout le précédent, et ce qui est saisi une fois sert partout. Choisissez un module pour voir ce qu’il comprend et le manipuler, avec des données fictives.</p>
         </div>
 
         <div class="mod-picker" id="module-tabs" role="tablist" aria-label="Modules HONOLYS">
@@ -492,14 +492,14 @@
           </button>
           <button class="mod-card" role="tab" id="tab-parcours" aria-controls="module-parcours" aria-selected="false" aria-labelledby="mod-2-kicker mod-2-name" aria-describedby="mod-2-pitch" tabindex="-1" type="button">
             <span class="mod-top"><span class="mod-num" aria-hidden="true">2</span><span class="mod-kicker" id="mod-2-kicker">Module 2</span></span>
-            <span class="mod-name" id="mod-2-name"><svg class="icon" aria-hidden="true"><use href="#i-route"/></svg>Parcours patient</span>
-            <span class="mod-pitch" id="mod-2-pitch">Honoraires, plus le lot de documents envoyé en un seul bouton et signé dans l’espace patient.</span>
+            <span class="mod-name" id="mod-2-name"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Programmation</span>
+            <span class="mod-pitch" id="mod-2-pitch">Honoraires, plus la programmation de l’intervention&nbsp;: le lot de documents part en un seul bouton et se signe dans l’espace patient.</span>
             <span class="mod-layers" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i></i></span>
           </button>
           <button class="mod-card" role="tab" id="tab-dossier" aria-controls="module-dossier" aria-selected="false" aria-labelledby="mod-3-kicker mod-3-name" aria-describedby="mod-3-pitch" tabindex="-1" type="button">
             <span class="mod-top"><span class="mod-num" aria-hidden="true">3</span><span class="mod-kicker" id="mod-3-kicker">Module 3</span><span class="mod-tag">En préparation</span></span>
             <span class="mod-name" id="mod-3-name"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Dossiers</span>
-            <span class="mod-pitch" id="mod-3-pitch">Parcours patient, plus le dossier médical&nbsp;: consultation, dictée, résultats et comptes rendus.</span>
+            <span class="mod-pitch" id="mod-3-pitch">Programmation, plus le dossier médical&nbsp;: consultation, dictée, résultats et comptes rendus.</span>
             <span class="mod-layers" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i></span>
           </button>
         </div>
@@ -607,16 +607,17 @@
           </div>
         </div>
 
-        <!-- Module 2 : Parcours patient -->
+        <!-- Module 2 : Programmation -->
         <div class="panel" id="module-parcours" role="tabpanel" aria-labelledby="tab-parcours" tabindex="0">
           <div class="panel-copy">
-            <p class="panel-kicker"><span aria-hidden="true">2</span>Module Parcours patient</p>
-            <h3>Un favori complet, un seul bouton.</h3>
-            <p>Tout le module Honoraires, plus le parcours du patient. Votre favori prépare toutes les pièces du lot&nbsp;; vous l’envoyez d’un clic, et le patient lit, paraphe, signe et retrouve tout dans son espace.</p>
+            <p class="panel-kicker"><span aria-hidden="true">2</span>Module Programmation</p>
+            <h3>L’intervention programmée, le lot envoyé d’un seul bouton.</h3>
+            <p>Tout le module Honoraires, plus la programmation de l’intervention. Votre favori prépare toutes les pièces du lot&nbsp;; vous l’envoyez d’un clic, et le patient lit, paraphe, signe et retrouve tout dans son espace.</p>
             <div class="feature-groups">
               <div class="feature-group">
-                <h4>Le lot de documents</h4>
+                <h4>La programmation et le lot</h4>
                 <ul class="ticks">
+                  <li>Date et heure fixées sur une plage de votre planning, convocation prête avec le lieu, l’heure et les consignes de jeûne</li>
                   <li>Convocation, devis, consentement éclairé, fiche d’information et ordonnances préopératoires, prêts dans le favori</li>
                   <li>Un seul bouton, «&nbsp;Envoyer le lot au patient&nbsp;», avec le lien de rendez-vous d’anesthésie</li>
                   <li>Fiches d’information des sociétés savantes de chaque spécialité, ou votre propre fiche</li>
@@ -696,7 +697,7 @@
           <div class="panel-copy">
             <p class="panel-kicker"><span aria-hidden="true">3</span>Module Dossiers <em class="chip chip-soft">En préparation</em></p>
             <h3>L’essentiel du patient, au même endroit.</h3>
-            <p>Tout le Parcours patient, plus le dossier médical. Consultations, comptes rendus, examens et chronologie sont réunis autour du patient&nbsp;; ce qu’il envoie arrive dans son dossier, et vous le validez. Ce module est en préparation.</p>
+            <p>Tout le module Programmation, plus le dossier médical. Consultations, comptes rendus, examens et chronologie sont réunis autour du patient&nbsp;; ce qu’il envoie arrive dans son dossier, et vous le validez. Ce module est en préparation.</p>
             <div class="feature-groups">
               <div class="feature-group">
                 <h4>En consultation</h4>
@@ -774,13 +775,15 @@
         <div class="shared" id="module-secretariat" role="region" aria-labelledby="shared-title">
           <div class="shared-copy">
             <p class="panel-kicker panel-kicker-all"><span aria-hidden="true">1&nbsp;2&nbsp;3</span>Dans les trois modules</p>
-            <h3 id="shared-title">Le secrétariat et le planning, pour tout le cabinet.</h3>
-            <p>Quel que soit votre module, le secrétariat a sa vue dédiée et le planning opératoire organise vos journées. La décision et le contenu médical restent au praticien.</p>
+            <h3 id="shared-title">Un secrétariat pour plusieurs praticiens.</h3>
+            <p>Quel que soit le module, une secrétaire accompagne plusieurs praticiens depuis un seul espace&nbsp;: chaque dossier indique son praticien, et chacun garde la décision et le contenu médical. Le planning opératoire organise les journées de chaque praticien.</p>
             <div class="feature-groups">
               <div class="feature-group">
-                <h4>Le secrétariat</h4>
+                <h4>Le secrétariat multipraticien</h4>
                 <ul class="ticks">
-                  <li>Interventions à programmer à la clinique, avec l’intitulé, le côté, l’heure de convocation et le dépassement</li>
+                  <li>Tous les praticiens accompagnés dans un seul espace, avec un filtre par praticien</li>
+                  <li>Chaque praticien rattache à son compte une ou plusieurs secrétaires</li>
+                  <li>Interventions à programmer à la clinique, classées par praticien, avec l’intitulé, le côté, l’heure de convocation et le dépassement</li>
                   <li>Pièces manquantes et prochaine action de chaque dossier, en un regard</li>
                   <li>Relances au patient en un clic, par courriel et dans son espace</li>
                   <li>Messageries Secrétariat et Patient, sans accès au contenu médical</li>
@@ -789,7 +792,7 @@
               <div class="feature-group">
                 <h4>Le planning opératoire</h4>
                 <ul class="ticks">
-                  <li>Journées opératoires colorées du vert au rouge selon leur remplissage</li>
+                  <li>Journées opératoires de chaque praticien, colorées du vert au rouge selon leur remplissage</li>
                   <li>Un clic sur une plage pour programmer un patient, sans quitter le planning</li>
                   <li>Durée opératoire et 20&nbsp;minutes entre deux interventions prises en compte</li>
                   <li>Une intervention reportée rouvre le planning pour choisir la nouvelle date</li>
@@ -799,11 +802,17 @@
           </div>
           <div class="demo-zone">
             <div class="demo" data-demo="secretariat">
-              <p class="try try-inline">Filtrez les dossiers, puis relancez un patient.</p>
+              <p class="try try-inline">Choisissez un praticien, filtrez ses dossiers, puis relancez un patient.</p>
               <div class="screen screen-lg">
                 <div class="screen-head">
                   <span class="app-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span>
-                  <span class="screen-title"><b>Dossiers du cabinet</b><small>Semaine du 26 octobre, données fictives</small></span>
+                  <span class="screen-title"><b>Dossiers du secrétariat</b><small>3 praticiens, semaine du 26 octobre, données fictives</small></span>
+                </div>
+                <div class="filters filters-doc" role="group" aria-label="Praticien">
+                  <button type="button" aria-pressed="true" data-doc-filter="all">Tous les praticiens <span>6</span></button>
+                  <button type="button" aria-pressed="false" data-doc-filter="martin"><i class="doc-dot doc-a" aria-hidden="true"></i>Dr&nbsp;Martin <span>3</span></button>
+                  <button type="button" aria-pressed="false" data-doc-filter="lambert"><i class="doc-dot doc-b" aria-hidden="true"></i>Dr&nbsp;Lambert <span>2</span></button>
+                  <button type="button" aria-pressed="false" data-doc-filter="costa"><i class="doc-dot doc-c" aria-hidden="true"></i>Dr&nbsp;Costa <span>1</span></button>
                 </div>
                 <div class="filters" role="group" aria-label="Filtrer les dossiers">
                   <button type="button" aria-pressed="true" data-filter="all">Tous <span>6</span></button>
@@ -812,12 +821,12 @@
                   <button type="button" aria-pressed="false" data-filter="ready">Prêts <span>2</span></button>
                 </div>
                 <ul class="rows dossier-rows" data-dossiers>
-                  <li data-status="ready"><span class="avatar">JM</span><span class="row-main"><b>M.&nbsp;Moreau</b><small>Posthectomie, mardi 27 oct.</small></span><span class="row-next">Convocation envoyée</span><span class="chip chip-ok">Prêt</span></li>
-                  <li data-status="todo"><span class="avatar">CG</span><span class="row-main"><b>Mme&nbsp;Garnier</b><small>Cystoscopie, mercredi 28 oct.</small></span><span class="row-next">Consentement à signer</span><span class="chip chip-warn">À compléter</span></li>
-                  <li data-status="remind"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois</b><small>Urétéroscopie, jeudi 29 oct.</small></span><span class="row-next">Bonne réception du devis en attente depuis 5 jours</span><button class="chip-btn" type="button" data-remind="M. Dubois"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
-                  <li data-status="todo"><span class="avatar">AR</span><span class="row-main"><b>M.&nbsp;Roux</b><small>Biopsies de prostate, vendredi 30 oct.</small></span><span class="row-next"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Ordonnance à valider par le praticien</span><span class="chip chip-warn">À compléter</span></li>
-                  <li data-status="remind"><span class="avatar">SL</span><span class="row-main"><b>Mme&nbsp;Laurent</b><small>Urétéroscopie, lundi 2 nov.</small></span><span class="row-next">Lien de règlement non ouvert</span><button class="chip-btn" type="button" data-remind="Mme Laurent"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
-                  <li data-status="ready"><span class="avatar">TP</span><span class="row-main"><b>M.&nbsp;Petit</b><small>Vasectomie, mardi 3 nov.</small></span><span class="row-next">Programmé à la clinique</span><span class="chip chip-ok">Prêt</span></li>
+                  <li data-status="ready" data-doc="martin"><span class="avatar">JM</span><span class="row-main"><b>M.&nbsp;Moreau<span class="doc-tag doc-a">Dr&nbsp;Martin</span></b><small>Posthectomie, mardi 27 oct.</small></span><span class="row-next">Convocation envoyée</span><span class="chip chip-ok">Prêt</span></li>
+                  <li data-status="todo" data-doc="lambert"><span class="avatar">CG</span><span class="row-main"><b>Mme&nbsp;Garnier<span class="doc-tag doc-b">Dr&nbsp;Lambert</span></b><small>Cystoscopie, mercredi 28 oct.</small></span><span class="row-next">Consentement à signer</span><span class="chip chip-warn">À compléter</span></li>
+                  <li data-status="remind" data-doc="martin"><span class="avatar">PD</span><span class="row-main"><b>M.&nbsp;Dubois<span class="doc-tag doc-a">Dr&nbsp;Martin</span></b><small>Urétéroscopie, jeudi 29 oct.</small></span><span class="row-next">Bonne réception du devis en attente depuis 5 jours</span><button class="chip-btn" type="button" data-remind="M. Dubois"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
+                  <li data-status="todo" data-doc="costa"><span class="avatar">AR</span><span class="row-main"><b>M.&nbsp;Roux<span class="doc-tag doc-c">Dr&nbsp;Costa</span></b><small>Biopsies de prostate, vendredi 30 oct.</small></span><span class="row-next"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Ordonnance à valider par le praticien</span><span class="chip chip-warn">À compléter</span></li>
+                  <li data-status="remind" data-doc="lambert"><span class="avatar">SL</span><span class="row-main"><b>Mme&nbsp;Laurent<span class="doc-tag doc-b">Dr&nbsp;Lambert</span></b><small>Urétéroscopie, lundi 2 nov.</small></span><span class="row-next">Lien de règlement non ouvert</span><button class="chip-btn" type="button" data-remind="Mme Laurent"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg>Relancer</button></li>
+                  <li data-status="ready" data-doc="martin"><span class="avatar">TP</span><span class="row-main"><b>M.&nbsp;Petit<span class="doc-tag doc-a">Dr&nbsp;Martin</span></b><small>Vasectomie, mardi 3 nov.</small></span><span class="row-next">Programmé à la clinique</span><span class="chip chip-ok">Prêt</span></li>
                 </ul>
                 <p class="screen-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Le contenu médical reste réservé au praticien.</p>
               </div>
@@ -837,7 +846,7 @@
               <tr>
                 <th scope="col"><span class="visually-hidden">Fonction</span></th>
                 <th scope="col"><span class="cmp-num" aria-hidden="true">1</span><span class="cmp-name">Honoraires</span></th>
-                <th scope="col"><span class="cmp-num" aria-hidden="true">2</span><span class="cmp-name">Parcours patient</span></th>
+                <th scope="col"><span class="cmp-num" aria-hidden="true">2</span><span class="cmp-name">Programmation</span></th>
                 <th scope="col"><span class="cmp-num" aria-hidden="true">3</span><span class="cmp-name">Dossiers</span></th>
               </tr>
             </thead>
@@ -852,11 +861,11 @@
             </tbody>
             <tbody>
               <tr class="cmp-group"><th scope="colgroup" colspan="4">Pour tout le cabinet</th></tr>
-              <tr><th scope="row">Vue secrétariat et messagerie du cabinet</th><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
+              <tr><th scope="row">Secrétariat pour plusieurs praticiens et messagerie du cabinet</th><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
               <tr><th scope="row">Planning opératoire</th><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
             </tbody>
             <tbody>
-              <tr class="cmp-group"><th scope="colgroup" colspan="4">Parcours patient</th></tr>
+              <tr class="cmp-group"><th scope="colgroup" colspan="4">Programmation</th></tr>
               <tr><th scope="row">Lot de documents envoyé en un seul bouton</th><td class="is-no"><span aria-hidden="true">–</span><span class="visually-hidden">Non inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
               <tr><th scope="row">Paraphe et signature dans l’espace patient</th><td class="is-no"><span aria-hidden="true">–</span><span class="visually-hidden">Non inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
               <tr><th scope="row">Ordonnances pré- et postopératoires, ALD bizone</th><td class="is-no"><span aria-hidden="true">–</span><span class="visually-hidden">Non inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td><td class="is-yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span class="visually-hidden">Inclus</span></td></tr>
@@ -896,7 +905,7 @@
             <span class="role-icon"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg></span>
             <h3>Le secrétariat</h3>
             <p class="role-verb">Organise et relance</p>
-            <p>Programmation à la clinique, pièces à compléter, relances et règlements au cabinet, sans jamais modifier le contenu médical.</p>
+            <p>Pour un ou plusieurs praticiens&nbsp;: programmation à la clinique, pièces à compléter, relances et règlements au cabinet, sans jamais modifier le contenu médical.</p>
           </div>
           <div class="role">
             <span class="role-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
@@ -1010,7 +1019,7 @@
           </details>
           <details>
             <summary>Quel module choisir&nbsp;?</summary>
-            <p>Honoraires pour sécuriser d’abord vos devis, vos règlements, vos reversions et votre suivi OPTAM-ACO. Parcours patient pour envoyer aussi le lot de documents de l’intervention et le faire signer dans l’espace patient. Dossiers, en préparation, y ajoutera le dossier médical. Chaque module reprend le précédent&nbsp;: vous pouvez commencer par Honoraires et évoluer ensuite. <a href="#comparer-modules">Comparer les trois modules</a>.</p>
+            <p>Honoraires pour sécuriser d’abord vos devis, vos règlements, vos reversions et votre suivi OPTAM-ACO. Programmation pour programmer aussi l’intervention, puis envoyer le lot de documents et le faire signer dans l’espace patient. Dossiers, en préparation, y ajoutera le dossier médical. Chaque module reprend le précédent&nbsp;: vous pouvez commencer par Honoraires et évoluer ensuite. <a href="#comparer-modules">Comparer les trois modules</a>.</p>
           </details>
           <details>
             <summary>Puis-je utiliser HONOLYS dès aujourd’hui&nbsp;?</summary>

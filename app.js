@@ -609,19 +609,45 @@
   /* ---------- Démonstration : secrétariat ---------- */
   const secretariat = $('[data-demo="secretariat"]');
   if (secretariat) {
+    // Deux filtres combinés : le praticien (secrétariat de plusieurs praticiens) et l'état du dossier.
     const filterButtons = $$('[data-filter]', secretariat);
+    const docButtons = $$('[data-doc-filter]', secretariat);
     const rows = $$('[data-dossiers] > li', secretariat);
     const live = $('[data-live]', secretariat);
-    filterButtons.forEach((button) => button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filterButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+    let statusFilter = 'all';
+    let docFilter = 'all';
+    const applyFilters = (speak) => {
+      const counts = { all: 0 };
       let shown = 0;
       rows.forEach((row) => {
-        const visible = filter === 'all' || row.dataset.status === filter;
+        const docOk = docFilter === 'all' || row.dataset.doc === docFilter;
+        if (docOk) {
+          counts.all += 1;
+          counts[row.dataset.status] = (counts[row.dataset.status] || 0) + 1;
+        }
+        const visible = docOk && (statusFilter === 'all' || row.dataset.status === statusFilter);
         row.hidden = !visible;
         if (visible) { shown += 1; restart(row, 'is-entering'); }
       });
-      announce(live, `${plural(shown, 'dossier')} affiché${shown > 1 ? 's' : ''}.`);
+      filterButtons.forEach((button) => {
+        const count = $('span', button);
+        if (count) count.textContent = String(counts[button.dataset.filter] || 0);
+      });
+      if (speak) {
+        const docButton = docButtons.find((button) => button.dataset.docFilter === docFilter);
+        const who = docFilter === 'all' || !docButton ? 'tous praticiens' : docButton.textContent.replace(/\s*\d+\s*$/, '').trim();
+        announce(live, `${plural(shown, 'dossier')} affiché${shown > 1 ? 's' : ''}, ${who}.`);
+      }
+    };
+    filterButtons.forEach((button) => button.addEventListener('click', () => {
+      statusFilter = button.dataset.filter;
+      filterButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      applyFilters(true);
+    }));
+    docButtons.forEach((button) => button.addEventListener('click', () => {
+      docFilter = button.dataset.docFilter;
+      docButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      applyFilters(true);
     }));
     $$('[data-remind]', secretariat).forEach((button) => button.addEventListener('click', () => {
       if (button.getAttribute('aria-disabled') === 'true') return;
