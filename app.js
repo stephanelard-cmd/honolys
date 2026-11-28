@@ -255,7 +255,10 @@
     if (!target) return { index: -1, target: null };
     return { index: panels.findIndex((panel) => panel && panel.contains(target)), target };
   };
-  const revealInModules = (id, { scroll = false, animate = true } = {}) => {
+  // Anciennes adresses (module 2 renommé « Programmation » le 28/11/2026).
+  const ANCRES_RENOMMEES = { 'module-parcours': 'module-programmation', 'tab-parcours': 'module-programmation' };
+  const revealInModules = (rawId, { scroll = false, animate = true } = {}) => {
+    const id = ANCRES_RENOMMEES[rawId] || rawId;
     const { index, target } = panelIndexOf(id);
     if (index < 0) return false;
     selectTab(index, { animate });
@@ -531,7 +534,7 @@
     }
   }
 
-  /* ---------- Démonstration : parcours patient ---------- */
+  /* ---------- Démonstration : module Programmation (lot de documents) ---------- */
   const parcours = $('[data-demo="parcours"]');
   if (parcours) {
     const screen = $('[data-parcours-screen]', parcours);
